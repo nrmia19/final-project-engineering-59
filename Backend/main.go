@@ -1,23 +1,21 @@
 package main
 
 import (
-	"net/http"
-	"ruangEdukasi/Backend/handler"
+	"database/sql"
+	"ruangEdukasi/Backend/api"
+	"ruangEdukasi/Backend/repository"
 
-	"github.com/gin-gonic/gin"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
-	router := gin.Default()
-	// router.POST("/home", Homehandler)
-	router.POST("/create", handler.CreateHandler)
-	http.HandleFunc("/login",handler.LoginHandler)
-	http.HandleFunc("/loginauth",handler.LoginAuthHandler)
-	http.HandleFunc("/register",handler.RegistHandler)
-	http.HandleFunc("/registerauth", handler.RegisterAuthHandler)
+	db, err := sql.Open("sqlite3", "Backend/database/migration/database.db")
+	if err != nil {
+		panic(err)
+	}
 
+	usersRepo := repository.NewUserRepository(db)
 
-	router.Run()
+	mainAPI := api.NewAPI(*usersRepo)
+	mainAPI.Start()
 }
-
-
