@@ -1,6 +1,10 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../assets/style/components/register.css";
+import { Form } from "react-bootstrap";
+import logo from "../assets/images/logo-ruang-edukasi.png";
+
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -42,30 +46,42 @@ const Register = () => {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div className="form-register">
-                    <h2>Let's Get Started!</h2>
-                    <div className="form-group">
-                        <input type={"text"} className="form-control" id="name" name="name" placeholder="Masukan Nama" value={name} onChange={handleChange} />
-                    </div>
-                    <div className="form-group">
-                        <input type={"text"} className="form-control" id="username" name="username" placeholder="Masukan Username" value={username} onChange={handleChange} />
-                    </div>
-                    <div className="form-group">
-                        <input type={"text"} className="form-control" id="email" name="email" placeholder="Masukan Email" value={email} onChange={handleChange} />
-                    </div>
-                    <div className="form-group">
-                        <input type={"password"} className="form-control" id="password" name="password" placeholder="Masukan Password" value={password} onChange={handleChange} />
-                    </div>
-                    <div className="form-group">
-                        <input type={"password"} className="form-control" id="confirmPassword" name="confirmPassword" placeholder="Konfirmasi Password" value={confirmPassword} onChange={handleChange} />
-                    </div>
-                    <button className="submit" type="submit">Sign Up</button>
-                </div>
-            </form>
-
+      <>
+        <div className="register-container">
+          <div className="register-content">
+            <div className="register-side-content">
+              
+            </div>
+            <div className="register-header">
+              <img src={logo} alt="logo" />
+            </div>
+            <div className="register-body">
+              <h2>Let's Get Started!</h2>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="form-group" controlId="formBasicName">
+                  <Form.Control className="form-control" type="text" placeholder="Enter Name" name="name" onChange={handleChange} />
+                </Form.Group>
+                <Form.Group className="form-group" controlId="formBasicEmail">
+                  <Form.Control className="form-control" type="email" placeholder="Enter Email" name="email" onChange={handleChange} />
+                </Form.Group>
+                <Form.Group className="form-group" controlId="formBasicUsername">
+                  <Form.Control className="form-control" type="text" placeholder="Enter Username" name="username" onChange={handleChange} />
+                </Form.Group>
+                <Form.Group className="form-group" controlId="formBasicPassword">
+                  <Form.Control className="form-control" type="password" placeholder="Enter Password" name="password" onChange={handleChange} />
+                </Form.Group>
+                <Form.Group className="form-group" controlId="formBasicConfirmPassword">
+                  <Form.Control className="form-control" type="password" placeholder="Confirm Password" name="confirmPassword" onChange={handleChange} />
+                </Form.Group>
+                <button className="button-register" type="submit">
+                  Sign Up
+                </button>
+                <p>Already have an account? <Link to={"/"}>Login</Link></p>
+              </Form>
+            </div>
+          </div>
         </div>
+      </>
     );
 };
 
