@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 // import './App.css';
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
 import Register from './components/Register';
 
 function App() {
@@ -8,7 +10,10 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
-      <Register />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     </div>
   );
 }
