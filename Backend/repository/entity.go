@@ -9,3 +9,9 @@ type User struct {
 	Loggedin bool   `db:"loggedin"`
 	Token    string `db:"token"`
 }
+
+type Article struct{
+	ID int64 `db:"id"`
+	Title string `db:"title"`
+	Subject string `db:"subject"`
+}

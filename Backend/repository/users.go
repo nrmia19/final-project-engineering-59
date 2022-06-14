@@ -13,15 +13,15 @@ func NewUserRepository(db *sql.DB) *UserRepository {
 	return &UserRepository{db: db}
 }
 
-func (u *UserRepository) FetchUserByID(id int64) (User, error) {
+func (u *UserRepository) FetchUserByUsername(username string) (User, error) {
 
 	// query
 	sql := `
-		SELECT * FROM users WHERE id = ?
+		SELECT * FROM users WHERE username = ?
 	;`
 
 	// execute query
-	data := u.db.QueryRow(sql, id)
+	data := u.db.QueryRow(sql, username)
 
 	// variable penampung
 	var allUser User

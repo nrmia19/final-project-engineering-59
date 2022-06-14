@@ -14,18 +14,15 @@ func main() {
 	}
 
 	_, err = db.Exec(`
-	CREATE TABLE IF NOT EXISTS users (
+	CREATE TABLE IF NOT EXISTS articles (
     id integer not null primary key AUTOINCREMENT,
-    username varchar(255) not null,
-    password varchar(255) not null,
-    role varchar(255) not null,
-    loggedin boolean not null
+    title varchar(255) not null,
+    subject varchar(255) not null
 );
 
-INSERT INTO users(username, password, role, loggedin) VALUES
-    ('aditira', '1234', 'admin', false),
-    ('dina', '4321', 'employee', false),
-    ('dito', '2552', 'employee', false);`)
+INSERT INTO articles(title, subject) VALUES
+    ('tips bangun pagi', 'nyalakan alarm saat bangun pagi'),
+    ('tips mengerjakan tugas', 'usahakan belajar terlebih dahulu sebelum mengerjakan tugas');`)
 
 	if err != nil {
 		panic(err)
