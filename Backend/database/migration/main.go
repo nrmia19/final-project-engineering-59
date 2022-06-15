@@ -8,21 +8,25 @@ import (
 
 // Run This Script for migration db
 func main() {
-	db, err := sql.Open("sqlite3", "./database/migration/database.db")
+	db, err := sql.Open("sqlite3", "./database.db")
 	if err != nil {
 		panic(err)
 	}
 
 	_, err = db.Exec(`
-	CREATE TABLE IF NOT EXISTS articles (
-    id integer not null primary key AUTOINCREMENT,
-    title varchar(255) not null,
-    subject varchar(255) not null
+	CREATE TABLE IF NOT EXISTS users (
+		id integer not null primary key AUTOINCREMENT,
+		username varchar(255) not null,
+		email varchar(255) not null,
+		password varchar(255) not null,
+		role varchar(255) not null,
+		loggedin boolean not null
 );
 
-INSERT INTO articles(title, subject) VALUES
-    ('tips bangun pagi', 'nyalakan alarm saat bangun pagi'),
-    ('tips mengerjakan tugas', 'usahakan belajar terlebih dahulu sebelum mengerjakan tugas');`)
+INSERT INTO users(username, email, password, role, loggedin) VALUES
+    ('aditira', 'aditira@gmail.com','1234', 'admin', false),
+    ('dina', 'dina@gmail.com','4321', 'user', false),
+    ('dito', 'dito@gamil.com','2552', 'user', false);`)
 
 	if err != nil {
 		panic(err)
