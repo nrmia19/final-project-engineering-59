@@ -9,13 +9,14 @@ import (
 )
 
 func main() {
-	db, err := sql.Open("sqlite3", "Backend/database/migration/database.db")
+	db, err := sql.Open("sqlite3", "database/migration/database.db")
 	if err != nil {
 		panic(err)
 	}
 
 	usersRepo := repository.NewUserRepository(db)
+	articleRepo := repository.NewArticleRepository(db)
 
-	mainAPI := api.NewAPI(*usersRepo)
+	mainAPI := api.NewAPI(*usersRepo,*articleRepo)
 	mainAPI.Start()
 }
