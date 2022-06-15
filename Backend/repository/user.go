@@ -3,6 +3,7 @@ package repository
 import (
 	"database/sql"
 	"errors"
+	"log"
 )
 
 type UserRepository struct {
@@ -13,7 +14,7 @@ func NewUserRepository(db *sql.DB) *UserRepository {
 	return &UserRepository{db: db}
 }
 
-func (u *UserRepository) FetchUserByUser(username string) (User, error) {
+func (u *UserRepository) FetchUserByUsername(username string) (User, error) {
 
 	// query
 	sql := `
@@ -30,6 +31,7 @@ func (u *UserRepository) FetchUserByUser(username string) (User, error) {
 	err := data.Scan(
 		&allUser.ID,
 		&allUser.Username,
+		&allUser.Email,
 		&allUser.Password,
 		&allUser.Loggedin,
 		&allUser.Token,
@@ -64,6 +66,7 @@ func (u *UserRepository) FetchUsers() ([]User, error) {
 		datas.Scan(
 			&alluser.ID,
 			&alluser.Username,
+			&alluser.Email,
 			&alluser.Password,
 			&alluser.Role,
 			&alluser.Loggedin,
@@ -98,23 +101,24 @@ func (u *UserRepository) Login(username string, password string) (*string, error
 
 	// cek userame dan password
 	if user.Username == username && user.Password == password {
+		log.Println(user)
 		return &user.Username, nil
 	} else {
 		return nil, errors.New(errMSG)
 	}
 }
 
-func (u *UserRepository) RegisttUser(username string, password string, role string, loggedin bool) error {
+func (u *UserRepository) InsertUser(username string, email string, password string, role string, loggedin bool) error {
 
 	// query
 	sql := `
 		INSERT INTO users 
-		(username, password, role, loggedin)
+		(username, email, password, role, loggedin)
 		VALUES
-		(?, ?, ?, ?)
+		(?, ?, ?, ?, ?)
 	;`
 
-	_, err := u.db.Exec(sql, username, password, role, loggedin)
+	_, err := u.db.Exec(sql, username, email, password, role, loggedin)
 	if err != nil {
 		return err
 	}

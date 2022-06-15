@@ -3,6 +3,7 @@ package api
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 
@@ -14,9 +15,25 @@ type User struct {
 	Password string `json:"password"`
 }
 
+type Register struct {
+	Username string `json:"username"`
+	Email string `json:"email"`
+	Password string `json:"password"`
+}
+
 type LoginSuccessResponse struct {
 	Username string `json:"username"`
 	Token    string `json:"token"`
+}
+
+type UserExist struct {
+	Username string `json:"username"`
+}
+
+type RegistSuccessResponse struct {
+	Username string `json:"username"`
+	Password    string `json:"password"`
+	Email string `json:"email"`
 }
 
 type AuthErrorResponse struct {
@@ -44,6 +61,7 @@ func (api *API) login(w http.ResponseWriter, req *http.Request) {
 	}
 
 	res, err := api.usersRepo.Login(user.Username, user.Password)
+	log.Println(res)
 
 	w.Header().Set("Content-Type", "application/json")
 	encoder := json.NewEncoder(w)
@@ -117,4 +135,44 @@ func (api *API) logout(w http.ResponseWriter, req *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("logged out"))
+}
+
+func (api *API) register(w http.ResponseWriter, req *http.Request) {
+
+	w.Header().Set("Content-Type", "application/json")
+
+	api.AllowOrigin(w, req)
+	var register Register
+	var role = "user"
+	var logged = false
+	err := json.NewDecoder(req.Body).Decode(&register)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	encoder := json.NewEncoder(w)
+	res , err := api.usersRepo.FetchUserByUsername(register.Username)
+
+	if err != nil {
+		w.WriteHeader(http.StatusUnauthorized)
+		encoder.Encode(AuthErrorResponse{Error: err.Error()})
+		return
+	} 
+
+	fmt.Println(res)
+
+	if err != nil {
+		err = api.usersRepo.InsertUser(register.Username,register.Email, register.Password,role,logged)
+		json.NewEncoder(w).Encode(RegistSuccessResponse{Username: register.Username,Email: register.Email, Password: register.Password })
+	}else {
+		json.NewEncoder(w).Encode(UserExist{Username: res.Username})
+	}
+	err = api.usersRepo.InsertUser(register.Username, register.Email, register.Password,role,logged)
+		
+		if err != nil {
+			w.WriteHeader(http.StatusUnauthorized)
+			encoder.Encode(AuthErrorResponse{Error: err.Error()})
+			return
+		} 
+		json.NewEncoder(w).Encode(RegistSuccessResponse{Username: register.Username, Email: register.Email, Password: register.Password })
 }
