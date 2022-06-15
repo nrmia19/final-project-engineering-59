@@ -7,44 +7,41 @@ import logo from "../assets/images/logo-ruang-edukasi.png";
 
 
 const Register = () => {
-    const [name, setName] = useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        if (password !== confirmPassword) {
-            setError("Password and Confirm Password must be same");
-            setTimeout(() => {
-                setError("");
-            }, 3000);
-        } else {
-            setSuccess("Register Success");
-            setTimeout(() => {
-                setSuccess("");
-            }, 3000);
-        }
+      e.preventDefault();
+      if (username.length < 5) {
+        setError("Username harus lebih dari 5 karakter");
+      } else if (email.length < 5) {
+        setError("Email harus lebih dari 5 karakter");
+      } else if (password.length < 5) {
+        setError("Password harus lebih dari 5 karakter");
+      }
+      else {
+        setSuccess("Berhasil mendaftar");
+      }
     };
 
-    const handleChange = (e) => {
-        if (e.target.name === "name") {
-            setName(e.target.value);
-        } else if (e.target.name === "username") {
-            setUsername(e.target.value);
-        } else if (e.target.name === "email") {
-            setEmail(e.target.value);
-        } else if (e.target.name === "password") {
-            setPassword(e.target.value);
-        } else if (e.target.name === "confirmPassword") {
-            setConfirmPassword(e.target.value);
-        }
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "username") {
+      setUsername(value);
+    } else if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
 
+    setError("");
+    setSuccess("");
+  };
 
+    
     return (
       <>
         <div className="register-container">
@@ -58,9 +55,6 @@ const Register = () => {
             <div className="register-body">
               <h2>Let's Get Started!</h2>
               <Form onSubmit={handleSubmit}>
-                <Form.Group className="form-group" controlId="formBasicName">
-                  <Form.Control className="form-control" type="text" placeholder="Enter Name" name="name" onChange={handleChange} />
-                </Form.Group>
                 <Form.Group className="form-group" controlId="formBasicEmail">
                   <Form.Control className="form-control" type="email" placeholder="Enter Email" name="email" onChange={handleChange} />
                 </Form.Group>
@@ -69,9 +63,6 @@ const Register = () => {
                 </Form.Group>
                 <Form.Group className="form-group" controlId="formBasicPassword">
                   <Form.Control className="form-control" type="password" placeholder="Enter Password" name="password" onChange={handleChange} />
-                </Form.Group>
-                <Form.Group className="form-group" controlId="formBasicConfirmPassword">
-                  <Form.Control className="form-control" type="password" placeholder="Confirm Password" name="confirmPassword" onChange={handleChange} />
                 </Form.Group>
                 <button className="button-register" type="submit">
                   Sign Up
