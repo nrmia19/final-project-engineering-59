@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
 
-body {
-    position: absolute;
-    width: 1440px;
-    height: 960px;
-    background: #FFFFFF;
-}
 
 p {
     font-family: 'Poppins';
@@ -14,11 +8,24 @@ p {
     margin-left: 80px;
 }
 
+.sidebar {
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+img .style-img {
+    width: 100%;
+    height: auto;
+}
+
 .register-header img {
     width: 15%;
     height: 15%;
-    margin-top: 100px;
-    margin-left: 680px;
+    margin-top: 60px;
+    margin-left: 610px;
 }
 
 .register-body {
@@ -26,8 +33,10 @@ p {
     gap: 10px;
     background: #FFFFFF;
     margin-top: 70px;
-    margin-left: 600px;
-
+    margin-left: 500px;
+    width: 50%;
+    height: auto;
+    position: relative;
 }
 
 .register-body h2 {
@@ -85,76 +94,70 @@ p {
 .button-register:hover {
     text-decoration: none;
     color: #FFFFFF;
-    background-color: #0ba3ad;
+    background-color: #2fcbd6;
 }
 
-@media screen and (max-width: 1440px) {
-    body {
-        width: 1440px;
-        height: 960px;
-    }
-
+@media screen and (max-width: 768px) {
     .register-header img {
         width: 15%;
         height: 15%;
-        margin-top: 100px;
-        margin-left: 680px;
+        margin-top: 30px;
+        margin-left: 610px;
+    }
+
+    .register-body {
+        padding: 11px 15px;
+        gap: 10px;
+        background: #FFFFFF;
+        margin-top: 70px;
+        margin-left: 500px;
+        width: 50%;
+        height: auto;
+        position: relative;
+    }
+
+    .register-body h2 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 42px;
+        color: #000000;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 90px;
     }
 
 }
 
-@media (max-width: 1024px) {
-
-    body {
-        width: 1024px;
-        height: 768px;
-    }
-
+@media screen and (max-width: 576px) {
     .register-header img {
-        width: 20%;
-        height: 20%;
-        margin-top: 100px;
-        margin-left: 150px;
+        width: 15%;
+        height: 15%;
+        margin-top: 30px;
+        margin-left: 610px;
     }
 
     .register-body {
-        margin-left: 50px;
-    }
-}
-
-@media (max-width: 768px) {
-
-    .register-header img {
-        width: 20%;
-        height: 20%;
-        margin-top: 100px;
-        margin-left: 150px;
-
+        padding: 11px 15px;
+        gap: 10px;
+        background: #FFFFFF;
+        margin-top: 70px;
+        margin-left: 500px;
+        width: 50%;
+        height: auto;
+        position: relative;
     }
 
-    .register-body {
-        margin-left: 50px;
-    }
-
-    .form-control .form-group {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .register-body {
-        margin-left: 50px;
-    }
-
-    .register-header img {
-        width: 20%;
-        height: 20%;
-        margin-top: 100px;
-        margin-left: 150px;
-
-    }
-
-    .form-control .form-group {
-        width: 100%;
+    .register-body h2 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 42px;
+        color: #000000;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 90px;
     }
 }
