@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
 
+<<<<<<< HEAD
+=======
+
+p {
+    font-family: 'Quicksand', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    margin-left: 80px;
+}
+
+>>>>>>> login
 .sidebar {
     width: 100%;
     height: 100vh;
