@@ -112,7 +112,7 @@ func (a *ArticleRepository) InsertArticle(title string, subject string) error {
 
 	// query
 	sql := `
-		INSERT INTO articles 
+		INSERT INTO articles
 		(title, subject)
 		VALUES
 		(?, ?)
