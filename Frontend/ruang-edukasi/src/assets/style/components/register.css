@@ -25,15 +25,15 @@ img .style-img {
     width: 15%;
     height: 15%;
     margin-top: 60px;
-    margin-left: 610px;
+    margin-left: 470px;
 }
 
 .register-body {
     padding: 11px 15px;
     gap: 10px;
     background: #FFFFFF;
-    margin-top: 70px;
-    margin-left: 500px;
+    margin-top: 50px;
+    margin-left: 350px;
     width: 50%;
     height: auto;
     position: relative;
@@ -99,8 +99,8 @@ img .style-img {
 
 @media screen and (max-width: 768px) {
     .register-header img {
-        width: 15%;
-        height: 15%;
+        width: 20%;
+        height: 20%;
         margin-top: 30px;
         margin-left: 610px;
     }
