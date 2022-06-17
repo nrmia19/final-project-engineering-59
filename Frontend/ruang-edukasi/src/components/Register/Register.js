@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../../assets/style/components/register.css";
 import { Form, Container, Row, Col } from "react-bootstrap";
 import logo from "../../assets/images/logo-ruang-edukasi.png";
-import image from "../../assets/images/image.png";
+import image from "../../assets/images/book.png";
 
 
 const Register = () => {
@@ -50,7 +50,7 @@ const Register = () => {
             <Row>
               <Col sm={2}>
               <div className="sidebar">
-                <img className="style-img" src={image} alt="image" />
+                <img className="style-img" src={image} alt="image" height="650vh" />
               </div>
               </Col>
               <Col sm={10}>
