@@ -30,7 +30,7 @@ const Login = () => {
             <Row>
               <Col sm={2}>
               <div className="sidebar">
-                <img className="style-img" src={image} alt="image" height="650vh"/>
+                <img className="style-img" src={image} alt="image" height="650vh" />
               </div>
               </Col>
               <Col sm={10}>
