@@ -9,26 +9,24 @@ body {
 .navbar {
     position: absolute;
     width: 1440px;
-    height: 79px;
+    height: 75px;
     left: 0px;
     top: 0px;
 
-    background: #FFFFFF;
+    background: #ffffff;
 }
 
 .nav-brand {
-    margin-bottom: 20px;
+    padding: 15px;
 }
 
 #basic-navbar-nav {
-    padding-bottom: 20px;
+    padding: 15px;
 }
 
 .nav-right {
     color: #000;
     text-decoration: none;
-
-
 }
 
 .nav-register {
@@ -51,7 +49,7 @@ body {
 
     &:hover {
         text-decoration: none;
-        background-color: #ad9dc2;
+        background-color: #7b6c8f;
     }
 }
 

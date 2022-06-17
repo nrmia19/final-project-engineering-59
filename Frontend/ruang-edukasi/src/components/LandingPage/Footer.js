@@ -1,13 +1,13 @@
 import React from "react";
-import footer from '../../assets/images/footer.png';
-// import { Container, Row, Col, Table } from "react-bootstrap";
+// import footer from '../../assets/images/footer.png';
+import { Container, Row, Col, Table } from "react-bootstrap";
 import './footer.scss';
 
 const Footer = () => {
     return (
         <>
             <div className="footer">
-                {/* <div className="footer-wrapper">
+                <div className="footer-wrapper">
                     <Container>
                         <Row>
                             <Col> 
@@ -36,8 +36,8 @@ const Footer = () => {
                         </Row>
                     </Container>
 
-                </div> */}
-                <img src={footer} className="footer-img" />
+                </div>
+                {/* <img src={footer} className="footer-img" /> */}
             </div>
         </>
         
