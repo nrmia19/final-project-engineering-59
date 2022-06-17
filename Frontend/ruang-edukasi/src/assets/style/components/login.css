@@ -10,7 +10,7 @@ p {
 
 .sidebar {
     width: 100%;
-    height: auto;
+    height: 100vh;
     top: 0;
     left: 0;
     position: absolute;
@@ -18,7 +18,6 @@ p {
 
 img .style-img {
     width: 100%;
-    height: auto;
 }
 
 .login-header img {

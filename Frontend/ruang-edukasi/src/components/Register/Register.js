@@ -42,8 +42,6 @@ const Register = () => {
     setSuccess("");
   };
 
-
-    
     return (
       <>
           <Container>
