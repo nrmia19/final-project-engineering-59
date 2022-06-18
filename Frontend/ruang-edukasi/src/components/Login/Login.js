@@ -28,7 +28,7 @@ const Login = () => {
       <>
         <Container>
             <Row>
-              <Col sm={2}>
+            <Col sm={3}>
               <div className="sidebar">
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -59,7 +59,10 @@ const Login = () => {
                     </button>
                     <p>Already have an account? <Link to={"/register"}>Sign Up</Link></p>
                   </Form>
-                </div>
+              </div>
+              <div className="login-footer">
+                  <p>All rights reserved. Copyright Ruang Edukasi Indonesia</p>
+              </div>
               </Col>
             </Row>
           </Container>
