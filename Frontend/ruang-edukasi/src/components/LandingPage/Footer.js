@@ -62,27 +62,34 @@ const Footer = () => {
                                             <td scope="row">Ikuti Kami</td>
                                         </tr>
                                         <tr>
+                                            <td scope="row">
                                             <Row className="row g-0">
                                                 <Col className="col-md-2">
-                                                    <img alt="instagram" src={instagram} width="30" height="30" />                                                 
+                                                    <a href="#instagram"><img alt="instagram" src={instagram} width="30" height="30" /></a>                                             
                                                 </Col>
                                                 <Col className="col-md-2">
-                                                    <img alt="youtube" src={youtube} width="30" height="30" />                                                 
+                                                    <a href="#youtube"><img alt="youtube" src={youtube} width="30" height="30" /></a>                                              
                                                 </Col>
                                                 <Col className="col-md-2">
-                                                    <img alt="twitter" src={twitter} width="30" height="30" />                                                 
+                                                    <a href="#twitter"><img alt="twitter" src={twitter} width="30" height="30" /></a>                                                 
                                                 </Col>
                                                 <Col className="col-md-2">
-                                                    <img alt="facebook" src={facebook} width="30" height="30" />                                                 
+                                                    <a href="#facebook"><img alt="facebook" src={facebook} width="30" height="30" /></a>                                                
                                                 </Col>
                                                 <Col className="col-md-2">
-                                                    <img alt="linkedin" src={linkedin} width="30" height="30" />                                                 
+                                                    <a href="#linkedin"><img alt="linkedin" src={linkedin} width="30" height="30" /></a>                                                
                                                 </Col>
                                             </Row>
+                                            </td>
                                         </tr>
                                     </Table>
                                 </div>
                                 
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col className="col-md-12 pt-5">
+                                All rights reserved. Copyright Ruang Edukasi 2022
                             </Col>
                         </Row>
                     </Container>
