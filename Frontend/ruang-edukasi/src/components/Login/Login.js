@@ -31,10 +31,14 @@ const Login = () => {
               <Col sm={2}>
               <div className="sidebar">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <img className="style-img" src={image} alt="image" height="650vh"/>
 =======
                 <img className="style-img" src={image} alt="image" height="650vh" />
 >>>>>>> login
+=======
+                <img className="style-img" src={image} alt="image" height="650vh" />
+>>>>>>> landing-page
               </div>
               </Col>
               <Col sm={10}>

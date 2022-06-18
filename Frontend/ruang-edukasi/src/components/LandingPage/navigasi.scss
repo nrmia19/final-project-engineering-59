@@ -7,28 +7,26 @@ body {
 }
 
 .navbar {
-    position: absolute;
-    width: 1440px;
-    height: 79px;
+    position: sticky;
+    width: 100%;
+    height: 75px;
     left: 0px;
     top: 0px;
-
-    background: #FFFFFF;
+    float: left;
+    background: #ffffff;
 }
 
 .nav-brand {
-    margin-bottom: 20px;
+    padding: 15px;
 }
 
 #basic-navbar-nav {
-    padding-bottom: 20px;
+    padding: 15px;
 }
 
 .nav-right {
     color: #000;
     text-decoration: none;
-
-
 }
 
 .nav-register {
@@ -51,7 +49,7 @@ body {
 
     &:hover {
         text-decoration: none;
-        background-color: #ad9dc2;
+        background-color: #7711f5;
     }
 }
 
@@ -78,4 +76,42 @@ body {
         text-decoration: none;
         background-color: #ad9dc2;
     }
+}
+
+@media screen and (max-width: 1000px) {
+    .nav-login {
+        display: none;
+    }
+
+    .nav-register {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .nav-brand {
+        padding: 10px;
+    }
+
+    #basic-navbar-nav {
+        padding: 10px;
+    }
+
+    .nav-register {
+        width: 115px;
+        height: 37px;
+        left: 1070px;
+        top: 22px;
+        margin-left: 10px;
+    }
+
+    .nav-login {
+        width: 115px;
+        height: 37px;
+        left: 1070px;
+        top: 22px;
+        margin-left: 10px;
+    }
+
 }

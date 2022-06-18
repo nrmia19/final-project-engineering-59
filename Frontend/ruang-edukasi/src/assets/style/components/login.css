@@ -95,6 +95,15 @@ img .style-img {
     background-color: #2fcbd6;
 }
 
+.login-footer {
+    margin-top: 170px;
+    margin-left: 270px;
+    width: 100%;
+    height: auto;
+    position: relative;
+    color: rgba(0, 0, 0, 0.5);
+}
+
 @media screen and (max-width: 768px) {
     .login-header img {
         width: 15%;
