@@ -1,46 +1,68 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../assets/style/components/register.css";
 import { Form, Container, Row, Col } from "react-bootstrap";
 import logo from "../../assets/images/logo-ruang-edukasi.png";
 import image from "../../assets/images/book.png";
-
+import useFetch from "../../useFetch";
 
 const Register = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState("");
-    
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      if (username.length < 5) {
-        setError("Username harus lebih dari 3 karakter");
-      } else if (email.length < 5) {
-        setError("Email harus lebih dari 3 karakter");
-      } else if (password.length < 5) {
-        setError("Password harus lebih dari 3 karakter");
-      }
-      else {
-        setSuccess("Berhasil mendaftar");
+
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      if (name === "username") {
+        setUsername(value);
+      } else if (name === "email") {
+        setEmail(value);
+      } else if (name === "password") {
+        setPassword(value);
       }
     };
+  
+  function signUp(e) {
+    e.preventDefault();
+    console.log(username, email, password);
+  }
+  
+  const handleSubmit = (e) => {
+  e.preventDefault();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "username") {
-      setUsername(value);
-    } else if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
+  const data = {
+    username,
+    email,
+    password,
+  };  
 
-    setError("");
-    setSuccess("");
-  };
+  const url = "http://localhost:8080/api/user/register";
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      },
+    body: JSON.stringify(data),
+    };
+  }
+
+  
+  
+
+      // if (username.length < 5) {
+      //   setError("Username harus lebih dari 3 karakter");
+      // } else if (email.length < 5) {
+      //   setError("Email harus lebih dari 3 karakter");
+      // } else if (password.length < 5) {
+      //   setError("Password harus lebih dari 3 karakter");
+      // }
+      // else {
+      //   setSuccess("Berhasil mendaftar");
+      // }
+
+
+  
 
     return (
       <>
@@ -67,7 +89,7 @@ const Register = () => {
                     <Form.Group className="form-group" controlId="formBasicPassword">
                       <Form.Control className="form-control" type="password" placeholder="Enter Password" name="password" onChange={handleChange} />
                     </Form.Group>
-                    <button className="button-register" type="submit">
+                    <button onClick={signUp} className="button-register" type="submit">
                       Sign Up
                     </button>
                     <p>Already have an account? <Link to={"/login"}>Login</Link></p>

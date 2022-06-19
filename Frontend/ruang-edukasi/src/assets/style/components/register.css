@@ -97,6 +97,16 @@ img .style-img {
     background-color: #2fcbd6;
 }
 
+.register-footer {
+    margin-top: 90px;
+    margin-left: 270px;
+    width: 100%;
+    height: auto;
+    position: relative;
+    color: rgba(0, 0, 0, 0.5);
+    ;
+}
+
 @media screen and (max-width: 768px) {
     .register-header img {
         width: 20%;
