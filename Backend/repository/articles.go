@@ -119,9 +119,12 @@ func (a *ArticleRepository) InsertArticle(title string, subject string) error {
 	;`
 
 	_, err := a.db.Exec(sql, title, subject)
+	
 	if err != nil {
+		log.Fatal("error disini")
 		return err
 	}
+	log.Println("sukses insert")
 
 	return nil
 }

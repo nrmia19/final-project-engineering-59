@@ -20,7 +20,17 @@ type CreateArticle struct {
 	Subject string `json:"subject"`
 }
 
-type Articleexist struct {
+type CreateArticleSuccessResponse struct {
+	Massage string `json:"massage"`
+	Article ArticleName `json:"article"`
+}
+
+type ArticleExistResponse struct {
+	Massage string `json:"massage"`
+	Article ArticleExist `json:"article"`
+}
+
+type ArticleExist struct {
 	Article string `json: "article"`
 }
 
@@ -28,7 +38,7 @@ type ArticleListSuccessResponse struct {
 	Articles []Article `json:"articles"`
 }
 
-type CreateArticleSuccessResponse struct {
+type ArticleName struct {
 	Title string `json:"title"`
 	Subject string `json:"subject"`
 }
@@ -76,21 +86,15 @@ func (api *API) insertArticle(w http.ResponseWriter, req *http.Request) {
 	}
 
 	encoder := json.NewEncoder(w)
-	res, err := api.articleRepo.FetchArticleByTitle(article.Title)
+	res, _ := api.articleRepo.FetchArticleByTitle(article.Title)
 
 	w.Header().Set("Content-Type", "application/json")
 
-	if err != nil {
-		w.WriteHeader(http.StatusUnauthorized)
-		encoder.Encode(AuthErrorResponse{Error: err.Error()})
-		return
-	}
 	if article.Title == *res {
-		log.Println(Articleexist{Article: *res})
-		json.NewEncoder(w).Encode(Articleexist{Article: *res})
-		json.NewEncoder(w).Encode("article is exist")
+		// log.Println(Articleexist{Article: *res})
+		json.NewEncoder(w).Encode(ArticleExistResponse{Massage: "article is exist", 
+		Article: ArticleExist{*res}})
 	}else {
-
 	err = api.articleRepo.InsertArticle(article.Title,article.Subject)
 	w.Header().Set("Content-Type", "application/json")
 	if err != nil {
@@ -98,9 +102,9 @@ func (api *API) insertArticle(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	log.Println(CreateArticleSuccessResponse{Title: article.Title, Subject: article.Subject})
+	// log.Println(CreateArticleSuccessResponse{Title: article.Title, Subject: article.Subject})
 
-	encoder.Encode(CreateArticleSuccessResponse{Title: article.Title, Subject: article.Subject})
-	encoder.Encode("Upload succes !!!, Thank you :)")
+	encoder.Encode(CreateArticleSuccessResponse{Massage: "Upload succes !!!, Thank you :)",
+	Article: ArticleName{Title: article.Title,Subject: article.Subject},})
 }
 }
