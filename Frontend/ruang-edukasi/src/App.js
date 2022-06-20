@@ -1,21 +1,25 @@
 // import './App.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
-import LandingPage from './components/LandingPage/LandingPage';
+// import Login from './components/Login/Login';
+// import Register from './components/Register/Register';
+// import LandingPage from './components/LandingPage/LandingPage';
+import ArtikelPage from './components/ArtikelPage/ArtikelPage';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<LandingPage />} />
-        </Routes>
+        </Routes> */}
       </header>
-      <Routes>
+      {/* <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+      </Routes> */}
+      <Routes>
+        <Route path='/artikel' element={<ArtikelPage />} />
       </Routes>
     </div>
   );

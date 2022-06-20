@@ -106,6 +106,7 @@ func (api *API) login(w http.ResponseWriter, req *http.Request) {
 	})
 
 	json.NewEncoder(w).Encode(LoginSuccessResponse{Username: *res, Token: tokenString})
+	json.NewEncoder(w).Encode("login success !!!!")
 }
 
 func (api *API) logout(w http.ResponseWriter, req *http.Request) {
@@ -139,7 +140,6 @@ func (api *API) logout(w http.ResponseWriter, req *http.Request) {
 
 func (api *API) register(w http.ResponseWriter, req *http.Request) {
 
-	w.Header().Set("Content-Type", "application/json")
 
 	api.AllowOrigin(w, req)
 	var register Register
@@ -150,29 +150,29 @@ func (api *API) register(w http.ResponseWriter, req *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
+
 	encoder := json.NewEncoder(w)
-	res , err := api.usersRepo.FetchUserByUsername(register.Username)
+	res, err := api.usersRepo.FetchUserByUsername(register.Username)
+
+	w.Header().Set("Content-Type", "application/json")
 
 	if err != nil {
 		w.WriteHeader(http.StatusUnauthorized)
 		encoder.Encode(AuthErrorResponse{Error: err.Error()})
 		return
-	} 
-
-	fmt.Println(res)
-
-	if err != nil {
-		err = api.usersRepo.InsertUser(register.Username,register.Email, register.Password,role,logged)
-		json.NewEncoder(w).Encode(RegistSuccessResponse{Username: register.Username,Email: register.Email, Password: register.Password })
-	}else {
-		json.NewEncoder(w).Encode(UserExist{Username: res.Username})
 	}
-	err = api.usersRepo.InsertUser(register.Username, register.Email, register.Password,role,logged)
-		
-		if err != nil {
-			w.WriteHeader(http.StatusUnauthorized)
-			encoder.Encode(AuthErrorResponse{Error: err.Error()})
-			return
-		} 
-		json.NewEncoder(w).Encode(RegistSuccessResponse{Username: register.Username, Email: register.Email, Password: register.Password })
+	if register.Username == *res {
+		json.NewEncoder(w).Encode(UserExist{Username: *res})
+		json.NewEncoder(w).Encode("user is exist")
+	}else {
+
+	err = api.usersRepo.InsertUser(register.Username, register.Email, register.Password, role, logged)
+	w.Header().Set("Content-Type", "application/json")
+	if err != nil {
+		encoder.Encode(AuthErrorResponse{Error: err.Error()})
+		return
+	}
+	json.NewEncoder(w).Encode(RegistSuccessResponse{Username: register.Username,Email: register.Email, Password: register.Password})
+	json.NewEncoder(w).Encode("register success !!!")
+}
 }
