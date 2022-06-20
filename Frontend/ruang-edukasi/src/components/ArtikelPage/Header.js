@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import "./header.css";
-import image from '../../assets/images/article.png';
+import objek from '../../assets/images/objek.png';
 
 const Header = () => {
     return (
@@ -18,19 +18,14 @@ const Header = () => {
                             Artikel yang tersedia ada beragam macam yang dibedakan menjadi beberapa kategori supaya kamu bisa mudah memilih topik bacaan. 
                             Jadi, tunggu apa lagi? Yuk baca sekarang dan bagikan ke sosial media kamu.
                         </h6>    
-                            {/* <button className="btn-started">
-                                Get Started
-                            </button> */}
                         </Col>
                         <Col>
                             <div className="header-img">
                                 <img
-                                    src={image}
+                                    src={objek}
                                     alt=""
-                                    width="250"
-                                    height="330"
-                                    left="976"
-                                    top="101"
+                                    width="510"
+                                    height="290"
                                 />
                             </div>
                         </Col>

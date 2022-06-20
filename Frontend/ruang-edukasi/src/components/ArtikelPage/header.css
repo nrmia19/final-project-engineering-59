@@ -32,42 +32,4 @@ body {
   padding-top: 10px;
   padding-left: 10px;
 }
-
-.header .btn-started {
-  font-family: 'Quicksand', sans-serif;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 10px;
-  gap: 10px;
-  width: 125px;
-  height: 37px;
-  left: 1070px;
-  top: 22px;
-  background: #56BBFF;
-  border-radius: 25px;
-  border: #56BBFF 1px solid;
-  color: #7003ec;
-  margin-top: 20px;
-}
-
-.header .btn-started:hover {
-  text-decoration: none;
-  background-color: #118ee0;
-}
-
-.header-img {
-  padding-left: 180px;
-  padding-top: 50px;
-}
 /*# sourceMappingURL=header.css.map */
