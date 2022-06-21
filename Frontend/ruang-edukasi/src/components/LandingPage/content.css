@@ -8,21 +8,17 @@ body {
 
 .content {
   float: left;
-  width: 1440px;
-  height: 700px;
+  width: 100%;
+  height: auto;
+  position: absolute;
   background-color: #FFFFFF;
   padding: 20px;
-  margin-top: 340px;
+  margin-top: 10px;
 }
 
 .content-wrapper {
-  padding: 50px;
+  padding: 10px;
   text-align: justify;
-  color: #FFFFFF;
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: 100;
-  font-style: normal;
 }
 
 h4 {
@@ -31,6 +27,76 @@ h4 {
   font-size: 20px;
   line-height: 28px;
   color: #10367A;
+  padding-top: 30px;
+}
+
+.content-title {
+  margin-left: 250px;
+  font-size: 15px;
+  text-align: justify;
+  color: #10367A;
+  font-weight: 600;
+  padding-top: 20px;
+}
+
+.content-title .button-selengkapnya {
+  font-family: 'Quicksand', sans-serif;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 6px 10px;
+  gap: 10px;
+  width: 216px;
+  height: 36px;
+  left: 776px;
+  top: 600px;
+  background: #99E2FF;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
+  font-weight: 300;
+  color: #342abb;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.content-title .button-selengkapnya:hover {
+  text-decoration: none;
+  background-color: #56BBFF;
+}
+
+@media screen and (max-width: 1000px) {
+  .content-title {
+    margin-left: 250px;
+    font-size: 15px;
+    text-align: justify;
+    color: #10367A;
+    font-weight: 600;
+    padding-top: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content-wrapper {
+    padding: 10px;
+    text-align: justify;
+  }
+
+  .content-title {
+    font-size: 15px;
+    text-align: justify;
+    color: #10367A;
+    font-weight: 600;
+    padding-top: 20px;
+  }
+
+  .content-title {
+    margin-left: 0px;
+  }
 }
 
 /*# sourceMappingURL=content.css.map */
