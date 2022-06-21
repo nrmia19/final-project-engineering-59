@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap");
+body {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  position: absolute;
+  width: 1440px;
+  height: 79px;
+  left: 0px;
+  top: 0px;
+  background: #FFFFFF;
+}
+
+.nav-brand {
+  margin-bottom: 20px;
+}
+
+#basic-navbar-nav {
+  padding-bottom: 20px;
+}
+
+.nav-right {
+  color: #000;
+  text-decoration: none;
+}
+
+.nav-register {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  gap: 10px;
+  width: 115px;
+  height: 37px;
+  left: 1070px;
+  top: 22px;
+  background: #9B63DC;
+  border-radius: 20px;
+  border: #9B63DC 1px solid;
+  margin-left: 700px;
+}
+
+.nav-register:hover {
+  text-decoration: none;
+  background-color: #ad9dc2;
+}
+
+.nav-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  gap: 10px;
+  width: 115px;
+  height: 37px;
+  left: 1070px;
+  top: 22px;
+  background: #ffffff;
+  border: #9B63DC 1px solid;
+  color: black;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.nav-login:hover {
+  text-decoration: none;
+  background-color: #ad9dc2;
+}
+/*# sourceMappingURL=navigasi.css.map */
