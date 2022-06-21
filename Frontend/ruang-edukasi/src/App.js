@@ -8,14 +8,10 @@ import LandingPage from './components/LandingPage/LandingPage';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
         <Routes>
           <Route path="/" element={<LandingPage />} />
-        </Routes>
-      </header>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );
