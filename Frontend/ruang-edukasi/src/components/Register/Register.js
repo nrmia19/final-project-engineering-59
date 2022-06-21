@@ -5,7 +5,7 @@ import "../../assets/style/components/register.css";
 import { Form, Container, Row, Col } from "react-bootstrap";
 import logo from "../../assets/images/logo-ruang-edukasi.png";
 import image from "../../assets/images/book.png";
-import useFetch from "../../useFetch";
+import axios from "axios";
 
 const Register = () => {
     const [username, setUsername] = useState("");
@@ -23,28 +23,20 @@ const Register = () => {
       }
     };
   
-  function signUp(e) {
-    e.preventDefault();
-    console.log(username, email, password);
-  }
+  // function signUp(e) {
+  //   e.preventDefault();
+  //   console.log(username, email, password);
+  // }
   
   const handleSubmit = (e) => {
   e.preventDefault();
 
-  const data = {
+  const userObject = {
     username,
     email,
     password,
   };  
 
-  const url = "http://localhost:8080/api/user/register";
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      },
-    body: JSON.stringify(data),
-    };
   }
 
   
