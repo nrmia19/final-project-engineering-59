@@ -1,58 +1,135 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../assets/style/components/register.css";
 import { Form, Container, Row, Col } from "react-bootstrap";
 import logo from "../../assets/images/logo-ruang-edukasi.png";
 import image from "../../assets/images/book.png";
+// import api from "../../api/register";
 import axios from "axios";
 
 const Register = () => {
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      if (name === "username") {
-        setUsername(value);
-      } else if (name === "email") {
-        setEmail(value);
-      } else if (name === "password") {
-        setPassword(value);
-      }
-    };
-  
-  // function signUp(e) {
-  //   e.preventDefault();
-  //   console.log(username, email, password);
+  // const [formValue, setformValue] = useState({
+  //   username: '',
+  //   email: '',
+  //   password:''
+  // });
+
+  // const handleChange = (event) => {
+  //   setformValue({
+  //     ...formValue,
+  //     [event.target.name]: event.target.value
+  //   });
   // }
-  
-  const handleSubmit = (e) => {
-  e.preventDefault();
-
-  const userObject = {
-    username,
-    email,
-    password,
-  };  
-
+  // const url = "http://localhost:8080/api/user";
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
+  }
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  }
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
   }
 
-  
-  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const dataUser = {
+      username: username,
+      email: email,
+      password: password
+    }
 
-      // if (username.length < 5) {
-      //   setError("Username harus lebih dari 3 karakter");
-      // } else if (email.length < 5) {
-      //   setError("Email harus lebih dari 3 karakter");
-      // } else if (password.length < 5) {
-      //   setError("Password harus lebih dari 3 karakter");
-      // }
-      // else {
-      //   setSuccess("Berhasil mendaftar");
-      // }
+    await axios
+      .post('http://localhost:8080/api/user/register', dataUser )
+      .then((res) => {
+        console.log(res.data);
+        alert('register sukses');
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('gagal register');
+      });
+  }
 
+
+  
+  // const handleSubmit = (e) => {
+  // e.preventDefault();
+
+  //   const userObject = async () => {
+  //     const user = {
+  //       username: username,
+  //       email: email,
+  //       password: password,
+  //     };
+  //     const response = await api.post("/register", user);
+  //     console.log(response.data);
+  //   }
+  //   userObject();
+  // }
+    
+  // const handleSubmit = async() => {
+  // // store the states in the form data
+  // const userObject = new FormData();
+  //   userObject.append("username", formValue.username)
+  //   userObject.append("email", formValue.email)
+  //   userObject.append("password", formValue.password)
+
+  // try {
+  //   // make axios post request
+  //   const response = await axios({
+  //     method: "post",
+  //     url: "http://localhost:8080/api/user/register",
+  //     data: userObject,
+  //     headers: { "Content-Type": "multipart/form-data" },
+  //   });
+  // } catch(error) {
+  //   console.log(error)
+  // }
+
+  // const [data, setData] = useState({
+  //   username: "",
+  //   email: "",
+  //   password: ""
+  // });
+
+  // const handleChange = (e) => {
+  //   const value = e.target.value;
+  //   // console.log({
+  //   //   ...data,
+  //   //   [e.target.name]: value
+  //   // })
+  //   setData({
+  //     ...data,
+  //     [e.target.name]: value
+  //   });
+  // };
+
+  // const url = "http://localhost:8080/api/user";
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const userData = {
+  //     username: data.username,
+  //     email: data.email,
+  //     password: data.password
+  //   };
+  //   await axios
+  //     .post(url + '/register', userData)
+  //     .then(result => {
+  //       console.log(result.data);
+  //       alert('sukses register!')
+  //       localStorage.setItem('token', result.data.token)
+  //     })
+  //     .catch(error => {
+  //       alert('gagal register!')
+  //       console.log(error)
+  //     })
+  
 
   
 
@@ -73,20 +150,23 @@ const Register = () => {
                   <h2>Let's Get Started!</h2>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group className="form-group" controlId="formBasicUsername">
-                      <Form.Control className="form-control" type="text" placeholder="Enter Username" name="username" onChange={handleChange} />
+                    <Form.Control zclassName="form-control" type="text" placeholder="Enter Username" value={username} name="username" onChange={handleUsername} />
                     </Form.Group>
                     <Form.Group className="form-group" controlId="formBasicEmail">
-                      <Form.Control className="form-control" type="email" placeholder="Enter Email" name="email" onChange={handleChange} />
+                      <Form.Control className="form-control" type="email" placeholder="Enter Email" value={email} name="email" onChange={handleEmail} />
                     </Form.Group>
                     <Form.Group className="form-group" controlId="formBasicPassword">
-                      <Form.Control className="form-control" type="password" placeholder="Enter Password" name="password" onChange={handleChange} />
+                      <Form.Control className="form-control" type="password" placeholder="Enter Password" value={password} name="password" onChange={handlePassword} />
                     </Form.Group>
-                    <button onClick={signUp} className="button-register" type="submit">
+                    <button className="button-register" type="submit">
                       Sign Up
                     </button>
                     <p>Already have an account? <Link to={"/login"}>Login</Link></p>
                   </Form>
-                </div>
+              </div>
+              <div className="register-footer">
+                  <p>All rights reserved. Copyright Ruang Edukasi Indonesia</p>
+              </div>
               </Col>
             </Row>
           </Container>
