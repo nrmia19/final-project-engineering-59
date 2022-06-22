@@ -1,0 +1,21 @@
+.footer {
+  margin-top: 800px;
+  background-color: #052868;
+  height: 500px;
+  width: 1440px;
+}
+
+.footer .footer-wrapper {
+  padding: 40px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.table-content {
+  color: #be0a0a;
+  text-decoration: none;
+  text-align: left;
+  font-size: 15px;
+  border: 0;
+}
+/*# sourceMappingURL=footer.css.map */
