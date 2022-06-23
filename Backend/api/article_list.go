@@ -90,6 +90,11 @@ func (api *API) insertArticle(w http.ResponseWriter, req *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 
+	if article.Title == "" {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
 	if article.Title == *res {
 		// log.Println(Articleexist{Article: *res})
 		json.NewEncoder(w).Encode(ArticleExistResponse{Massage: "article is exist", 
@@ -104,7 +109,7 @@ func (api *API) insertArticle(w http.ResponseWriter, req *http.Request) {
 
 	// log.Println(CreateArticleSuccessResponse{Title: article.Title, Subject: article.Subject})
 
-	encoder.Encode(CreateArticleSuccessResponse{Massage: "Upload succes !!!, Thank you :)",
+	encoder.Encode(CreateArticleSuccessResponse{Massage: "upload succes !!!, thank you :)",
 	Article: ArticleName{Title: article.Title,Subject: article.Subject},})
 }
 }
