@@ -2,10 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../assets/style/components/register.css";
-import { Form, Container, Row, Col } from "react-bootstrap";
+import { Form, Container, Row, Col, Alert } from "react-bootstrap";
 import logo from "../../assets/images/logo-ruang-edukasi.png";
 import image from "../../assets/images/book.png";
-// import api from "../../api/register";
 import axios from "axios";
 
 const Register = () => {
@@ -25,7 +24,7 @@ const Register = () => {
   //     [event.target.name]: event.target.value
   //   });
   // }
-  // const url = "http://localhost:8080/api/user";
+
   const handleUsername = (e) => {
     setUsername(e.target.value);
   }
@@ -43,12 +42,13 @@ const Register = () => {
       email: email,
       password: password
     }
-
+    
     await axios
-      .post('http://localhost:8080/api/user/register', dataUser )
+      .post('api/user/register', dataUser)
       .then((res) => {
         console.log(res.data);
         alert('register sukses');
+        localStorage.setItem('token', res.data.token)
       })
       .catch((err) => {
         console.log(err);
