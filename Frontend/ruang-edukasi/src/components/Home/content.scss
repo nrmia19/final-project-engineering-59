@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inika&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.opening{
+    font-family: 'Poppins', sans-serif;
+    margin-top: 20px;
+    color: rgba(16, 54, 122, 1);
+    text-align: center;
+}
+
+.article{   
+    margin-top: 50px;
+    margin-left: 20%;
+    display: flex;
+    width: 700px;
+    height: auto;
+
+    .detail{
+        p{
+            font-family: 'Poppins', sans-serif;
+            color: black;
+            font-size: 16px;
+            font-weight: 100;
+            margin-left: 20px;
+        }
+
+        button{
+            margin-left: 20px;
+            border-radius: 20px;
+            background-color: rgba(153, 226, 255, 1);
+            width: 150px;
+            font-size: 16px;
+            border: none;
+            color: rgba(16, 54, 122, 1);
+        }
+    }
+}

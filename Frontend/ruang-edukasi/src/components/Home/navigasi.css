@@ -20,11 +20,28 @@ body {
 
 #basic-navbar-nav {
   padding-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  -webkit-box-align: right;
+      -ms-flex-align: right;
+          align-items: right;
+  gap: 0;
+  padding: 0;
+  margin-right: 30px;
 }
 
-.nav-right {
+#basic-navbar-nav .nav-right {
   color: #000;
   text-decoration: none;
+}
+
+#basic-navbar-nav p {
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .left-nav {
@@ -35,11 +52,14 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 10px;
   list-style: none;
 }
 
-.left-nav ul a {
+.left-nav ul .nav-brand {
+  margin-top: 20px;
+}
+
+.left-nav ul li a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,6 +71,10 @@ body {
           align-items: center;
   color: black;
   text-decoration: none;
-  margin-top: 10px;
+}
+
+.left-nav ul li.menu {
+  margin-top: 30px;
+  margin-left: 40%;
 }
 /*# sourceMappingURL=navigasi.css.map */

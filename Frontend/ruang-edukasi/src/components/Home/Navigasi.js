@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import logo from '../../assets/images/ruang-edukasi.png';
+import profile from '../../assets/images/Ellipse 2.png';
 import "./navigasi.scss";
 
 const Navigasi = () => {
@@ -22,16 +23,17 @@ const Navigasi = () => {
                                     <b>Ruang Edukasi</b>
                                 </Navbar.Brand>
                             </li>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Artikel</a></li>
-                            <li><a href="#">Konsultasi</a></li>
+                            <li className="menu"><a href="#">Home</a></li>
+                            <li className="menu"><a href="#">Artikel</a></li>
+                            <li className="menu"><a href="#">Konsultasi</a></li>
                         </ul>
                     </div>
                     
                     <Navbar.Collapse id="basic-navbar-nav">
                        <Nav className="nav-right">
-                            
+                            <img src={profile}></img>
                         </Nav>
+                        <p>Emily</p>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
