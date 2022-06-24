@@ -2,45 +2,51 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../assets/style/components/register.css";
-import { Form, Container, Row, Col, Alert } from "react-bootstrap";
+import { Form, Container, Row, Col} from "react-bootstrap";
 import logo from "../../assets/images/logo-ruang-edukasi.png";
 import image from "../../assets/images/book.png";
 import axios from "axios";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
-  // const [formValue, setformValue] = useState({
-  //   username: '',
-  //   email: '',
-  //   password:''
-  // });
+  const [data, setData] = useState({
+    username: '',
+    email: '',
+    password:''
+  });
 
-  // const handleChange = (event) => {
-  //   setformValue({
-  //     ...formValue,
-  //     [event.target.name]: event.target.value
-  //   });
+  const handleChange = (event) => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value
+    });
+  }
+
+  // const handleUsername = (e) => {
+  //   setUsername(e.target.value);
+  // }
+  // const handleEmail = (e) => {
+  //   setEmail(e.target.value);
+  // }
+  // const handlePassword = (e) => {
+  //   setPassword(e.target.value);
   // }
 
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-  }
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  }
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  }
-
+  const handleStorage = () => {
+    localStorage.setItem('username', data.username);
+    localStorage.setItem('username', data.email);
+    localStorage.setItem('password', data.password);
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const dataUser = {
-      username: username,
-      email: email,
-      password: password
+      username: data.username,
+      email: data.email,
+      password: data.password
     }
     
     await axios
@@ -48,7 +54,6 @@ const Register = () => {
       .then((res) => {
         console.log(res.data);
         alert('register sukses');
-        localStorage.setItem('token', res.data.token)
       })
       .catch((err) => {
         console.log(err);
@@ -150,15 +155,15 @@ const Register = () => {
                   <h2>Let's Get Started!</h2>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group className="form-group" controlId="formBasicUsername">
-                    <Form.Control zclassName="form-control" type="text" placeholder="Enter Username" value={username} name="username" onChange={handleUsername} />
+                    <Form.Control zclassName="form-control" type="text" placeholder="Enter Username" value={data.username} name="username" onChange={handleChange} />
                     </Form.Group>
                     <Form.Group className="form-group" controlId="formBasicEmail">
-                      <Form.Control className="form-control" type="email" placeholder="Enter Email" value={email} name="email" onChange={handleEmail} />
+                      <Form.Control className="form-control" type="email" placeholder="Enter Email" value={data.email} name="email" onChange={handleChange} />
                     </Form.Group>
                     <Form.Group className="form-group" controlId="formBasicPassword">
-                      <Form.Control className="form-control" type="password" placeholder="Enter Password" value={password} name="password" onChange={handlePassword} />
+                      <Form.Control className="form-control" type="password" placeholder="Enter Password" value={data.password} name="password" onChange={handleChange} />
                     </Form.Group>
-                    <button className="button-register" type="submit">
+                    <button onClick={handleStorage} className="button-register" type="submit">
                       Sign Up
                     </button>
                     <p>Already have an account? <Link to={"/login"}>Login</Link></p>
