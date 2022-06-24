@@ -49,7 +49,7 @@ func (a *ArticleRepository) FetchArticleByID(id int64) (Article, error) {
 	return article, nil
 }
 
-func (a *ArticleRepository) FetchArticleByName(articleTitle string) (Article, error) {
+func (a *ArticleRepository) FetchArticleByTitle(articleTitle string) (*string, error) {
 	// TODO: You must implement this function for fetch product by name
 
 	// query
@@ -69,10 +69,10 @@ func (a *ArticleRepository) FetchArticleByName(articleTitle string) (Article, er
 	)
 
 	if err != nil {
-		return article, err
+		return &article.Title, err
 	}
 
-	return article, nil
+	return &article.Title, nil
 }
 
 func (a *ArticleRepository) FetchArticles() ([]Article, error) {
@@ -106,4 +106,22 @@ func (a *ArticleRepository) FetchArticles() ([]Article, error) {
 	}
 	log.Println(allArticle)
 	return allArticle, nil
+}
+
+func (a *ArticleRepository) InsertArticle(title string, subject string) error {
+
+	// query
+	sql := `
+		INSERT INTO articles 
+		(title, subject)
+		VALUES
+		(?, ?)
+	;`
+
+	_, err := a.db.Exec(sql, title, subject)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

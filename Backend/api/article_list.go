@@ -15,6 +15,10 @@ type Article struct {
 	Subject string `json:"subject"`
 }
 
+type Articleexist struct {
+	Article string `json: "article"`
+}
+
 type ArticleListSuccessResponse struct {
 	Articles []Article `json:"articles"`
 }
@@ -49,4 +53,39 @@ func (api *API) articleList(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	encoder.Encode(response)
 	log.Println("article list :" ,response)
+}
+
+func (api *API) insertArticle(w http.ResponseWriter, req *http.Request) {
+
+	api.AllowOrigin(w, req)
+	var article Article
+	err := json.NewDecoder(req.Body).Decode(&article)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	encoder := json.NewEncoder(w)
+	res, err := api.articleRepo.FetchArticleByTitle(article.Title)
+
+	w.Header().Set("Content-Type", "application/json")
+
+	if err != nil {
+		w.WriteHeader(http.StatusUnauthorized)
+		encoder.Encode(AuthErrorResponse{Error: err.Error()})
+		return
+	}
+	if article.Title == *res {
+		json.NewEncoder(w).Encode(Articleexist{Article: *res})
+		json.NewEncoder(w).Encode("article is exist")
+	}else {
+
+	err = api.articleRepo.InsertArticle(article.Title,article.Subject)
+	w.Header().Set("Content-Type", "application/json")
+	if err != nil {
+		encoder.Encode(AuthErrorResponse{Error: err.Error()})
+		return
+	}
+	encoder.Encode("Upload succes !!!, Thank you :)")
+}
 }
