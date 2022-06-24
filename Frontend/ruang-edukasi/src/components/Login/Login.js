@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , Navigate} from "react-router-dom";
 import "../../assets/style/components/login.css";
 import { Form, Container, Row, Col} from "react-bootstrap";
 import logo from "../../assets/images/logo-ruang-edukasi.png";
@@ -9,41 +9,59 @@ import axios from "axios";
 
 
 const Login = () => {
-  const [data, setData] = useState({
-    username: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setData({
-      ...data,
-      [e.target.name]: value
-    });
-  };
-
-  const handleStorage = () => {
-    localStorage.setItem('username', data.username);
-    localStorage.setItem('password', data.password);
-   };
+  const [username, setUsername] = useState("");
+  const [errorUsername, setErrorUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+  const [error, setError] = useState("");
+  const [redirect, setRedirect] = useState("");
   
-  const handleSubmit = async (e) => {
+  const handle = () => {
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+   };
+
+  const handleUsername = (e) => {
+    const value = e.target.value
+    setUsername(value);
+    if (value.length < 3 || value.length > 20) {
+      setErrorUsername('The username must be between 3 and 20 characters.')
+    }
+  }
+
+  const handlePassword = (e) => {
+    const value = e.target.value
+    setPassword(value);
+     if (value.length < 6 || value.length > 40) {
+      setErrorPassword('The password must be between 6 and 40 characters')
+    }
+  }
+  
+  const handleSubmit = (e) => {
     e.preventDefault();
     const dataUser = {
-      username: data.username,
-      password: data.password
+      username: username,
+      password: password
     }
     
-    await axios
-      .post('api/user/login', dataUser)
-      .then((res) => {
-        alert('login sukses');
-         localStorage.setItem('token', res.data.token)
-      })
-      .catch((err) => {
-        console.log(err);
-        alert('gagal login');
-      });
+    if (!username) {
+      setError("The username must be between 3 and 20 characters.")
+    } else if (!password) {
+      setError('The username must be between 3 and 20 characters.')
+    } else {
+      axios
+        .post('api/user/login', dataUser)
+        .then(result => {
+          if (result) {
+            setRedirect(true)
+            alert("sukses login")
+          }
+        })
+        .catch(error => {
+          setError(error.reponse.data.message)
+          alert("gagal login")
+        })
+    }
   }
 
 
@@ -122,6 +140,11 @@ const Login = () => {
 
     return (
       <>
+        {
+          redirect && (
+            <Navigate to="/home"/>
+          )
+        }
         <Container>
             <Row>
             <Col sm={2}>
@@ -139,12 +162,12 @@ const Login = () => {
                   <h2>Let's Get Started!</h2>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group className="form-group" controlId="formBasicUsername">
-                      <Form.Control className="form-control" type="text" placeholder="Enter Username" value={data.username} name="username" onChange={handleChange} />
+                      <Form.Control className="form-control" type="text" placeholder="Enter Username" value={username} name="username" onChange={handleUsername} />
                     </Form.Group>
                     <Form.Group className="form-group" controlId="formBasicPassword">
-                    <Form.Control className="form-control" type="password" placeholder="Enter Password" value={data.password} name="password" onChange={handleChange} />
+                    <Form.Control className="form-control" type="password" placeholder="Enter Password" value={password} name="password" onChange={handlePassword} />
                     </Form.Group>
-                    <button onClick={handleStorage} className="button-login" type="submit">
+                    <button onClick={handle} className="button-login" type="submit">
                       Login
                     </button>
                     <p>Already have an account? <Link to={"/register"}>Sign Up</Link></p>
