@@ -22,10 +22,12 @@ func NewAPI(usersRepo repository.UserRepository, articleRepo repository.ArticleR
 	mux.Handle("/api/user/login", api.POST(http.HandlerFunc(api.login)))
 	mux.Handle("/api/user/logout", api.POST(http.HandlerFunc(api.logout)))
 	mux.Handle("/api/user/register", api.POST(http.HandlerFunc(api.register)))
+	
 
 	// API with AuthMiddleware:
 	mux.Handle("/api/articles", api.GET(api.AuthMiddleWare(http.HandlerFunc(api.articleList))))
-	
+	mux.Handle("/api/article/create", api.POST(api.AuthMiddleWare(http.HandlerFunc(api.insertArticle))))
+	mux.Handle("/api/mentoring", api.AuthMiddleWare(http.HandlerFunc(mentoring)))
 
 	// // API with AuthMiddleware and AdminMiddleware
 	// mux.Handle("/api/admin/sales", api.GET(api.AuthMiddleWare(api.AdminMiddleware(http.HandlerFunc(api.getDashboard)))))
