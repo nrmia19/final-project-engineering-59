@@ -25,6 +25,7 @@ img .style-img {
     height: 15%;
     margin-top: 60px;
     margin-left: 470px;
+    cursor: pointer;
 }
 
 .login-body {
@@ -96,7 +97,7 @@ img .style-img {
 }
 
 .login-footer {
-    margin-top: 170px;
+    margin-top: 150px;
     margin-left: 270px;
     width: 100%;
     height: auto;
