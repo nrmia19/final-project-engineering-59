@@ -34,12 +34,6 @@ const Register = () => {
   // const handlePassword = (e) => {
   //   setPassword(e.target.value);
   // }
-
-  const handleStorage = () => {
-    localStorage.setItem('username', data.username);
-    localStorage.setItem('username', data.email);
-    localStorage.setItem('password', data.password);
-  };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
