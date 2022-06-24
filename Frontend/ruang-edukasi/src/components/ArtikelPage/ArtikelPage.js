@@ -1,9 +1,8 @@
-import React from "react";
-import Navigasi from "./Navigasi";
-import Header from "./Header";
-import Content from "./Content";
-import Footer from "./Footer";
-
+import React from 'react';
+import Navigasi from './Navigasi';
+import Header from './Header';
+import Footer from './Footer';
+import Content from './Content';
 const ArtikelPage = () => {
   return (
     <>

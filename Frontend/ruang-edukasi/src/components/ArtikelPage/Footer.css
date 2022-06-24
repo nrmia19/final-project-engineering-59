@@ -1,10 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
 .footer {
   background-color: #052868;
-  bottom: 0px;
-  left: 0px;
   padding: 10px;
-  margin-top: 1000px;
 }
 
 .footer-wrapper {
@@ -14,11 +11,10 @@
 }
 
 .table-content {
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   text-decoration: none;
   text-align: left;
   font-size: 15px;
-  margin-top: 20px;
 }
 
 .table-content td {
@@ -28,17 +24,15 @@
 @media screen and (max-width: 1000px) {
   .table-content {
     font-size: 15px;
-    margin-top: 20px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .table-content {
-    font-family: "Quicksand", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     text-decoration: none;
     text-align: left;
     font-size: 15px;
     margin-top: 20px;
   }
 }
-/*# sourceMappingURL=footer.css.map */

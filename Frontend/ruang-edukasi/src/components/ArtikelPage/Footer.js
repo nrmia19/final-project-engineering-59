@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="footer">
         <div className="footer-wrapper">
           <Container>
-            <Row className="row g-8">
+            <Row className="row">
               <Col className="col-md-3">
                 <div className="footer-content">
                   <Table className="table-content table-borderless">
