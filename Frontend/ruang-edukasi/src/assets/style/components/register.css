@@ -2,7 +2,7 @@
 
 
 p {
-    font-family: 'Poppins';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: bold;
     margin-left: 80px;
@@ -40,7 +40,7 @@ img .style-img {
 }
 
 .register-body h2 {
-    font-family: 'Poppins';
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 25px;
@@ -117,7 +117,7 @@ img .style-img {
     }
 
     .register-body h2 {
-        font-family: 'Poppins';
+        font-family: 'Quicksand', sans-serif;
         font-style: normal;
         font-weight: bold;
         font-size: 25px;
@@ -150,7 +150,7 @@ img .style-img {
     }
 
     .register-body h2 {
-        font-family: 'Poppins';
+        font-family: 'Quicksand', sans-serif;
         font-style: normal;
         font-weight: bold;
         font-size: 25px;
