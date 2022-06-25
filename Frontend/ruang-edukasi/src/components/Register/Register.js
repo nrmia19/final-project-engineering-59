@@ -1,31 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { Link, Navigate} from "react-router-dom";
+import { Link} from "react-router-dom";
 import "../../assets/style/components/register.css";
-import { Form, Container, Row, Col} from "react-bootstrap";
+import { Form, Container, Row, Col } from "react-bootstrap";
 import logo from "../../assets/images/logo-ruang-edukasi.png";
 import image from "../../assets/images/book.png";
 import axios from "axios";
-
-
-const validEmail = (value) => {
-  if (!value) {
-    return (
-      <div className="invalid-feedback d-block">
-        This is not a valid email.
-      </div>
-    );
-  }
-};
-const vusername = (value) => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="invalid-feedback d-block">
-        The username must be between 3 and 20 characters.
-      </div>
-    );
-  }
-};
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -36,6 +16,7 @@ const Register = () => {
   const [errorPassword, setErrorPassword] = useState("");
   const [error, setError] = useState("");
   const [redirect, setRedirect] = useState("");
+  const [alert, setAlert] = useState("");
   
 
 
@@ -45,20 +26,23 @@ const Register = () => {
     if (value.length < 3 || value.length > 20) {
       setErrorUsername('The username must be between 3 and 20 characters.')
     }
+    setError('')
   }
   const handleEmail = (e) => {
     const value = e.target.value;
     setEmail(value);
     if (!value) {
-      setErrorUsername('This is not a valid email.')
+      setErrorEmail('This is not a valid email.')
     }
+    setError('')
   }
   const handlePassword = (e) => {
     const value = e.target.value
     setPassword(value);
      if (value.length < 6 || value.length > 40) {
-      setErrorUsername('The password must be between 6 and 40 characters')
+      setErrorPassword('The password must be between 6 and 40 characters')
     }
+    setError('')
   }
   
   const handleSubmit = (e) => {
@@ -80,24 +64,30 @@ const Register = () => {
         .post('api/user/register', dataUser)
         .then(result => {
           if (result) {
-            setRedirect(true)
-            alert("sukses register")
+            if (result.data) {
+              setUsername('')
+              setEmail('')
+              setPassword('')
+              setAlert(result.data.massage)
+              setTimeout(() => {
+                setAlert('')
+              }, 3000)
+            }
           }
         })
         .catch(error => {
-          setError(error.reponse.data.message)
-          alert("gagal register")
+          setError(error.reponse.data.massage)
         })
     }
   }
 
     return (
       <>
-        {
+        {/* {
           redirect && (
-            <Navigate to="/home" />
+          <Navigate to="/home" />
           )
-        }
+        } */}
           <Container>
             <Row>
               <Col sm={2}>
@@ -109,7 +99,23 @@ const Register = () => {
                 <div className="register-header">
                   <img src={logo} alt="logo" />
                 </div>
-                <div className="register-body">
+              <div className="register-body">
+                 {
+                  error && (
+                    <div className="alert alert-danger mt-2 p-2" style={{ width: "25rem" }}>
+                      <p>{error}</p>
+                    </div>
+                  )
+                }
+                {
+                  alert && (
+                    <div className="alert alert-primary mt-2 p-2" style={{ width: "25rem" }}>
+                      <p>Registration Successfull</p>
+                    </div>
+                  )
+                }
+                
+                    
                   <h2>Let's Get Started!</h2>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group className="form-group" controlId="formBasicUsername">
