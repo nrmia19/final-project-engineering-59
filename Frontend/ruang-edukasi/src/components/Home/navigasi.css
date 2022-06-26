@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap");
+body {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  position: absolute;
+  width: 1440px;
+  height: 79px;
+  left: 0px;
+  top: 0px;
+  background: #FFFFFF;
+}
+
+.nav-brand {
+  margin-bottom: 20px;
+}
+
+#basic-navbar-nav {
+  padding-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  -webkit-box-align: right;
+      -ms-flex-align: right;
+          align-items: right;
+  gap: 0;
+  padding: 0;
+  margin-right: 30px;
+}
+
+#basic-navbar-nav .nav-right {
+  color: #000;
+  text-decoration: none;
+}
+
+#basic-navbar-nav p {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.left-nav {
+  text-decoration: none;
+}
+
+.left-nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.left-nav ul .nav-brand {
+  margin-top: 20px;
+}
+
+.left-nav ul li a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+  text-decoration: none;
+}
+
+.left-nav ul li.menu {
+  margin-top: 30px;
+  margin-left: 40%;
+}
+/*# sourceMappingURL=navigasi.css.map */

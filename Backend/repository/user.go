@@ -14,7 +14,7 @@ func NewUserRepository(db *sql.DB) *UserRepository {
 	return &UserRepository{db: db}
 }
 
-func (u *UserRepository) FetchUserByUsername(username string) (User, error) {
+func (u *UserRepository) FetchUserByUsername(username string) (*string, error) {
 
 	// query
 	sql := `
@@ -38,10 +38,10 @@ func (u *UserRepository) FetchUserByUsername(username string) (User, error) {
 	)
 
 	if err != nil {
-		return User{}, nil
+		return &allUser.Username, nil
 	}
 
-	return allUser, nil
+	return &allUser.Username, nil
 }
 
 func (u *UserRepository) FetchUsers() ([]User, error) {

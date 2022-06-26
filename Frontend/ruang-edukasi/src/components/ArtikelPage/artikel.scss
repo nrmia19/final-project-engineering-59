@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.content-article {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    padding: 20px;
+    margin-top: 480px;
+
+}
+
+.content-menu {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #99E2FF;
+    width: 100%;
+    height: 90px;
+    padding: 25px;
+    text-align: justify;
+
+    a {
+        text-decoration: none;
+        color: #000000;
+    }
+}
+
+h4 {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.artikel-list {
+    margin-top: 60px;
+
+    .text-card {
+        margin-left: 0;
+    }
+
+    .selengkapnya-btn {
+        font-family: 'Quicksand', sans-serif;
+        flex-direction: row;
+        justify-content: center;
+        padding: 6px 10px;
+        gap: 10px;
+
+        width: 180px;
+        height: 36px;
+        left: 776px;
+        top: 600px;
+        background: #99E2FF;
+        border-radius: 10px;
+        border: none;
+        font-size: 14px;
+        font-weight: 300;
+        color: #342abb;
+        cursor: pointer;
+        margin-top: 20px;
+
+        &:hover {
+            text-decoration: none;
+            background-color: #56BBFF;
+        }
+    }
+}
