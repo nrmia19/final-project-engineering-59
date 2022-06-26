@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+
+.class-footer {
+    width: 100%;
+    background-color: rgb(5, 40, 104);
+    bottom: 0px;
+    left: 0px;
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+.wrapper-footer {
+    font-family: 'Quicksand', sans-serif;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.tabel-content {
+    font-family: 'Quicksand', sans-serif;
+    text-decoration: none;
+    text-align: left;
+    font-size: 15px;
+    margin-top: 20px;
+    color: #ffffff;
+
+    td {
+        color: #ffffff;
+    }
+}
