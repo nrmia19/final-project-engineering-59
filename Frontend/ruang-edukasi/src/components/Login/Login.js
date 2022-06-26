@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link , Navigate} from "react-router-dom";
+import { Link} from "react-router-dom";
 import "../../assets/style/components/login.css";
 import { Form, Container, Row, Col} from "react-bootstrap";
 import logo from "../../assets/images/logo-ruang-edukasi.png";
@@ -14,27 +14,25 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [error, setError] = useState("");
-  const [redirect, setRedirect] = useState("");
-  
-  const handle = () => {
-    localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
-   };
+  const [redirect, setRedirect] = useState(false);
+  const [alert, setAlert] = useState("");
 
   const handleUsername = (e) => {
     const value = e.target.value
     setUsername(value);
-    if (value.length < 3 || value.length > 20) {
-      setErrorUsername('The username must be between 3 and 20 characters.')
+    if (!value) {
+      setErrorUsername('Username cannot be empty')
     }
+    setError('')
   }
 
   const handlePassword = (e) => {
     const value = e.target.value
     setPassword(value);
-     if (value.length < 6 || value.length > 40) {
-      setErrorPassword('The password must be between 6 and 40 characters')
+     if (!value) {
+      setErrorPassword('Password cannot be empty')
     }
+    setError('')
   }
   
   const handleSubmit = (e) => {
@@ -45,106 +43,32 @@ const Login = () => {
     }
     
     if (!username) {
-      setError("The username must be between 3 and 20 characters.")
+      setError('Username cannot be empty')
     } else if (!password) {
-      setError('The username must be between 3 and 20 characters.')
+      setError('Password cannot be empty')
     } else {
       axios
         .post('api/user/login', dataUser)
         .then(result => {
           if (result) {
+            localStorage.setItem('username', result.data.Account.username)
+            localStorage.setItem('token', result.data.Account.token)
             setRedirect(true)
-            alert("sukses login")
+            setAlert(result.data.massage)
+            setTimeout(() => {
+              setAlert(result.data.massage)
+            }, 5000)
+            window.location.href = '/home';
           }
         })
         .catch(error => {
-          setError(error.reponse.data.message)
-          alert("gagal login")
+          setError(error.response.data.error)
         })
     }
   }
 
-
-  
-  // const handleSubmit = (e) => {
-  // e.preventDefault();
-
-  //   const userObject = async () => {
-  //     const user = {
-  //       username: username,
-  //       email: email,
-  //       password: password,
-  //     };
-  //     const response = await api.post("/register", user);
-  //     console.log(response.data);
-  //   }
-  //   userObject();
-  // }
-    
-  // const handleSubmit = async() => {
-  // // store the states in the form data
-  // const userObject = new FormData();
-  //   userObject.append("username", formValue.username)
-  //   userObject.append("email", formValue.email)
-  //   userObject.append("password", formValue.password)
-
-  // try {
-  //   // make axios post request
-  //   const response = await axios({
-  //     method: "post",
-  //     url: "http://localhost:8080/api/user/register",
-  //     data: userObject,
-  //     headers: { "Content-Type": "multipart/form-data" },
-  //   });
-  // } catch(error) {
-  //   console.log(error)
-  // }
-
-  // const [data, setData] = useState({
-  //   username: "",
-  //   email: "",
-  //   password: ""
-  // });
-
-  // const handleChange = (e) => {
-  //   const value = e.target.value;
-  //   // console.log({
-  //   //   ...data,
-  //   //   [e.target.name]: value
-  //   // })
-  //   setData({
-  //     ...data,
-  //     [e.target.name]: value
-  //   });
-  // };
-
-  // const url = "http://localhost:8080/api/user";
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const userData = {
-  //     username: data.username,
-  //     email: data.email,
-  //     password: data.password
-  //   };
-  //   await axios
-  //     .post(url + '/register', userData)
-  //     .then(result => {
-  //       console.log(result.data);
-  //       alert('sukses register!')
-  //       localStorage.setItem('token', result.data.token)
-  //     })
-  //     .catch(error => {
-  //       alert('gagal register!')
-  //       console.log(error)
-  //     })
-
     return (
       <>
-        {
-          redirect && (
-            <Navigate to="/home"/>
-          )
-        }
         <Container>
             <Row>
             <Col sm={2}>
@@ -159,7 +83,23 @@ const Login = () => {
                 </div>
                 </a>
                 <div className="login-body">
-                  <h2>Let's Get Started!</h2>
+                <div className="alert-style"> 
+                  {
+                    error && (
+                      <div className="alert alert-danger" style={{ width: "24rem" }}>
+                        <p>{error}</p>
+                      </div>
+                    )
+                  }
+                  {
+                    alert && (
+                      <div className="alert alert-primary" style={{ width: "24rem" }}>
+                        <p>Login Success</p>
+                      </div>
+                    )
+                  }
+                  </div>
+                  <h2>Welcome! Happy to see you</h2>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group className="form-group" controlId="formBasicUsername">
                       <Form.Control className="form-control" type="text" placeholder="Enter Username" value={username} name="username" onChange={handleUsername} />
@@ -167,7 +107,7 @@ const Login = () => {
                     <Form.Group className="form-group" controlId="formBasicPassword">
                     <Form.Control className="form-control" type="password" placeholder="Enter Password" value={password} name="password" onChange={handlePassword} />
                     </Form.Group>
-                    <button onClick={handle} className="button-login" type="submit">
+                    <button className="button-login" type="submit">
                       Login
                     </button>
                     <p>Already have an account? <Link to={"/register"}>Sign Up</Link></p>
