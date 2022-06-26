@@ -9,15 +9,13 @@ import Home from './components/Home/Home';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-        </Routes>
-      </header>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<Home />} />
+          <Route exact path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/home" element={<Home />} />
+          {/* <Route path="/artikel" element={<Artikel />} />
+          <Route path="/konsultasi" element={<Konsultasi />} /> */}
       </Routes>
     </div>
   );
