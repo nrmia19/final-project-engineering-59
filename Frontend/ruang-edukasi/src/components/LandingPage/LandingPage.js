@@ -7,10 +7,20 @@ import Footer from "./Footer";
 const LandingPage = () => {
     return (
         <>
-            <Navigasi />
-            <Header />
-            <Content />
-            <Footer />
+            <div className="landing-page">
+                <nav>
+                    <Navigasi />
+                </nav>
+                <header>
+                    <Header />
+                </header>
+                <main>
+                    <Content />
+                </main>
+                <footer>
+                    <Footer />
+                </footer>
+            </div>
         </>
     );
 }

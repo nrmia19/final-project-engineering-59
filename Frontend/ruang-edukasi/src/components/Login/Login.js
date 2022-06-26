@@ -28,9 +28,9 @@ const Login = () => {
       <>
         <Container>
             <Row>
-              <Col sm={2}>
+            <Col sm={2}>
               <div className="sidebar">
-                <img className="style-img" src={image} alt="image" height="650vh"/>
+                <img className="style-img" src={image} alt="image" height="650vh" />
               </div>
               </Col>
               <Col sm={10}>
@@ -51,7 +51,10 @@ const Login = () => {
                     </button>
                     <p>Already have an account? <Link to={"/register"}>Sign Up</Link></p>
                   </Form>
-                </div>
+              </div>
+              <div className="login-footer">
+                  <p>All rights reserved. Copyright Ruang Edukasi Indonesia</p>
+              </div>
               </Col>
             </Row>
           </Container>

@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
 
-<<<<<<< HEAD
-=======
 
 p {
     font-family: 'Quicksand', sans-serif;
@@ -10,7 +8,6 @@ p {
     margin-left: 80px;
 }
 
->>>>>>> login
 .sidebar {
     width: 100%;
     height: 100vh;
@@ -96,6 +93,15 @@ img .style-img {
     text-decoration: none;
     color: #FFFFFF;
     background-color: #2fcbd6;
+}
+
+.login-footer {
+    margin-top: 170px;
+    margin-left: 270px;
+    width: 100%;
+    height: auto;
+    position: relative;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 @media screen and (max-width: 768px) {

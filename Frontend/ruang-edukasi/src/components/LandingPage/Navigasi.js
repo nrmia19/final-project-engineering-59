@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import logo from '../../assets/images/ruang-edukasi.png';
-import "./navigasi.scss";
+import "./navigasi.css";
 
 const Navigasi = () => {
     return (

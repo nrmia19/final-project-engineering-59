@@ -12,10 +12,32 @@
 }
 
 .table-content {
-  color: #be0a0a;
+  font-family: 'Quicksand', sans-serif;
   text-decoration: none;
   text-align: left;
   font-size: 15px;
-  border: 0;
+  margin-top: 20px;
 }
+
+.table-content td {
+  color: #ffffff;
+}
+
+@media screen and (max-width: 1000px) {
+  .table-content {
+    font-size: 15px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .table-content {
+    font-family: 'Quicksand', sans-serif;
+    text-decoration: none;
+    text-align: left;
+    font-size: 15px;
+    margin-top: 20px;
+  }
+}
+
 /*# sourceMappingURL=footer.css.map */
