@@ -34,6 +34,7 @@ func main() {
 	
 	INSERT INTO articles(title, subject) VALUES
     ('tips menghafal cepat','jangan sambil main handphone');`)
+
 	if err != nil {
 		panic(err)
 	}
