@@ -22,15 +22,30 @@ type Register struct {
 }
 
 type LoginSuccessResponse struct {
+	Massage string `json:"massage"`
+	Account LoginSuccess `json: "account"`
+}
+
+type LoginSuccess struct{
 	Username string `json:"username"`
 	Token    string `json:"token"`
 }
 
-type UserExist struct {
+type UserExistResponse struct {
+	Massage string `json:"massage"`
+	Username UserExist `json:"username"`
+}
+
+type UserExist struct{
 	Username string `json:"username"`
 }
 
 type RegistSuccessResponse struct {
+	Massage string `json:"massage"`
+	Account Data `json:"account"`
+}
+
+type Data struct{
 	Username string `json:"username"`
 	Password    string `json:"password"`
 	Email string `json:"email"`
@@ -105,7 +120,8 @@ func (api *API) login(w http.ResponseWriter, req *http.Request) {
 		Path:    "/",
 	})
 
-	json.NewEncoder(w).Encode(LoginSuccessResponse{Username: *res, Token: tokenString})
+	json.NewEncoder(w).Encode(LoginSuccessResponse{Massage: "login success !!!!", Account: 
+	LoginSuccess{Username: *res, Token: tokenString}})
 }
 
 func (api *API) logout(w http.ResponseWriter, req *http.Request) {
@@ -139,7 +155,6 @@ func (api *API) logout(w http.ResponseWriter, req *http.Request) {
 
 func (api *API) register(w http.ResponseWriter, req *http.Request) {
 
-	w.Header().Set("Content-Type", "application/json")
 
 	api.AllowOrigin(w, req)
 	var register Register
@@ -150,29 +165,28 @@ func (api *API) register(w http.ResponseWriter, req *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
+
 	encoder := json.NewEncoder(w)
-	res , err := api.usersRepo.FetchUserByUsername(register.Username)
+	res, err := api.usersRepo.FetchUserByUsername(register.Username)
+
+	w.Header().Set("Content-Type", "application/json")
 
 	if err != nil {
 		w.WriteHeader(http.StatusUnauthorized)
 		encoder.Encode(AuthErrorResponse{Error: err.Error()})
 		return
-	} 
-
-	fmt.Println(res)
-
-	if err != nil {
-		err = api.usersRepo.InsertUser(register.Username,register.Email, register.Password,role,logged)
-		json.NewEncoder(w).Encode(RegistSuccessResponse{Username: register.Username,Email: register.Email, Password: register.Password })
-	}else {
-		json.NewEncoder(w).Encode(UserExist{Username: res.Username})
 	}
-	err = api.usersRepo.InsertUser(register.Username, register.Email, register.Password,role,logged)
-		
-		if err != nil {
-			w.WriteHeader(http.StatusUnauthorized)
-			encoder.Encode(AuthErrorResponse{Error: err.Error()})
-			return
-		} 
-		json.NewEncoder(w).Encode(RegistSuccessResponse{Username: register.Username, Email: register.Email, Password: register.Password })
+	if register.Username == *res {
+		json.NewEncoder(w).Encode(UserExistResponse{Massage: "user is exist", Username: UserExist{*res}})
+	}else {
+
+	err = api.usersRepo.InsertUser(register.Username, register.Email, register.Password, role, logged)
+	w.Header().Set("Content-Type", "application/json")
+	if err != nil {
+		encoder.Encode(AuthErrorResponse{Error: err.Error()})
+		return
+	}
+	json.NewEncoder(w).Encode(RegistSuccessResponse{Massage : "register success !!!",
+	Account: Data{Username: register.Username,Email: register.Email,Password: register.Password}})
+}
 }
