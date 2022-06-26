@@ -11,6 +11,7 @@ type User struct {
 	Token    string `db:"token"`
 }
 
+
 type Article struct{
 	ID int64 `db:"id"`
 	Title string `db:"title"`
