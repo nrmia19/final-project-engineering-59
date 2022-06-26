@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../LandingPage/Header";
+import Header from "./Header";
 import Content from "./Content";
-import Footer from "../LandingPage/Footer";
+import Footer from "./Footer";
 import Navigasi from "./Navigasi";
 
 const Home = () => {

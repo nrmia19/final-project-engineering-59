@@ -1,40 +1,98 @@
-@import url('https://fonts.googleapis.com/css2?family=Inika&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
 
-body{
-    font-family: 'Poppins', sans-serif;
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.opening{
-    font-family: 'Poppins', sans-serif;
-    margin-top: 20px;
-    color: rgba(16, 54, 122, 1);
-    text-align: center;
-}
-
-.article{   
-    margin-top: 50px;
-    margin-left: 20%;
-    display: flex;
-    width: 700px;
+.content {
+    float: left;
+    width: 100%;
     height: auto;
+    position: absolute;
+    background-color: #FFFFFF;
+    padding: 20px;
+    margin-top: 350px;
+}
 
-    .detail{
-        p{
-            font-family: 'Poppins', sans-serif;
-            color: black;
-            font-size: 16px;
-            font-weight: 100;
-            margin-left: 20px;
-        }
+.content-wrapper {
+    padding: 10px;
+    text-align: justify;
+}
 
-        button{
-            margin-left: 20px;
-            border-radius: 20px;
-            background-color: rgba(153, 226, 255, 1);
-            width: 150px;
-            font-size: 16px;
-            border: none;
-            color: rgba(16, 54, 122, 1);
+h4 {
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #10367A;
+    padding-top: 30px;
+}
+
+.content-title {
+    margin-left: 250px;
+    font-size: 15px;
+    text-align: justify;
+    color: #10367A;
+    font-weight: 600;
+    padding-top: 20px;
+
+    .button-selengkapnya {
+        font-family: 'Quicksand', sans-serif;
+        flex-direction: row;
+        justify-content: center;
+        padding: 6px 10px;
+        gap: 10px;
+
+        width: 216px;
+        height: 36px;
+        left: 776px;
+        top: 600px;
+        background: #99E2FF;
+        border-radius: 20px;
+        border: none;
+        font-size: 14px;
+        font-weight: 300;
+        color: #342abb;
+        cursor: pointer;
+        margin-top: 20px;
+
+        &:hover {
+            text-decoration: none;
+            background-color: #56BBFF;
         }
     }
+}
+
+@media screen and (max-width: 1000px) {
+    .content-title {
+        margin-left: 250px;
+        font-size: 15px;
+        text-align: justify;
+        color: #10367A;
+        font-weight: 600;
+        padding-top: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content-wrapper {
+        padding: 10px;
+        text-align: justify;
+    }
+
+    .content-title {
+        font-size: 15px;
+        text-align: justify;
+        color: #10367A;
+        font-weight: 600;
+        padding-top: 20px;
+    }
+
+    .content-title {
+        margin-left: 0px;
+    }
+
 }
