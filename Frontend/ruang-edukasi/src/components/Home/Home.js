@@ -1,13 +1,11 @@
 import React from "react";
-import Header from "./Header";
+import Header from "../LandingPage/Header";
 import Content from "./Content";
-import Footer from "./Footer";
-import Navigasi from "./Navigasi";
+import Footer from "../LandingPage/Footer";
 
 const Home = () => {
     return (
         <>
-            <Navigasi />
             <Header />
             <Content />
             <Footer />
