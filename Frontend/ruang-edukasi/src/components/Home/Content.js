@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
 import img1 from '../../assets/images/article.png';
 import img2 from '../../assets/images/lifetime.png';
@@ -96,7 +97,7 @@ const Content = () => {
                                     Tulis Artikel dan bagikan informasi yang kalian inginkan. Ini merupakan salah satu fitur yang dapat membantu kalian untuk meningkatkan kualitas pendidikan. Jangan ragu untuk mengedukasi antar siswa untuk bisa termotivasi belajar. Karena itu, Ruang Edukasi menyediakan fitur artikel.
                                     <br />
                                     <button className="button-selengkapnya" type="submit">
-                                       Lihat Selengkapnya
+                                       <Link to="/artikel">Lihat Selengkapnya</Link>
                                     </button>
                             </Col>
                         </Row>
@@ -109,7 +110,7 @@ const Content = () => {
                                     Konsultasi dengan guru atau teman anda. Ini merupakan salah satu fitur yang dapat membantu kita meningkatkan kualitas pendidikan. Anda bisa mengkonsultasikan perasaan atau psikologis kalian terkait dengan kegiatan belajar. Karena itu, Ruang Edukasi menyediakan fitur konsultasi.
                                     <br />
                                     <button className="button-selengkapnya" type="submit">
-                                       Lihat Selengkapnya
+                                       <Link to="/konsultasi">Lihat Selengkapnya</Link>
                                     </button>
                             </Col>
                         </Row>

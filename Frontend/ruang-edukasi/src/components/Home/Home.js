@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Content from "./Content";
-// import Footer from "../LandingPage/Footer";
+import Footer from "./Footer";
 import Navigasi from "./Navigasi";
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
             <Navigasi />
             <Header />
             <Content />
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }
