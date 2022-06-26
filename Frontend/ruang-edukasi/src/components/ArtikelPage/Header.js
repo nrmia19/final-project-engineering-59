@@ -6,9 +6,9 @@ import objek from '../../assets/images/objek.png';
 const Header = () => {
     return (
         <>
-            <div className="header">
+            <div className="article-header">
                 <Container>
-                    <Row>
+                 <Row>
                         <Col>
                         <h2>
                             Ruang Edukasi menyediakan banyak artikel menarik lho! <br /> 
@@ -20,12 +20,12 @@ const Header = () => {
                         </h6>    
                         </Col>
                         <Col>
-                            <div className="header-img">
+                            <div className="img-header">
                                 <img
                                     src={objek}
                                     alt=""
-                                    width="510"
-                                    height="290"
+                                    width="500"
+                                    height="280"
                                 />
                             </div>
                         </Col>

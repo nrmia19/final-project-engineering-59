@@ -10,10 +10,12 @@ function App() {
   return (
     <div className="App">
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route exact path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/artikel" element={<ArtikelPage />} />
+          {/* <Route path="/home" element={<Home />} />
+          <Route path="/konsultasi" element={<Konsultasi />} /> */}
       </Routes>
     </div>
   );

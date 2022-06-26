@@ -1,32 +1,40 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import logo from '../../assets/images/ruang-edukasi.png';
-import user from '../../assets/images/user.png';
-import "./navigasi.css";
+import profile from '../../assets/images/Ellipse 2.png';
+import "./navigasi.scss";
 
 const Navigasi = () => {
     return (
         <>
             <Navbar className="navbar" variant="light" expand="lg">
                 <Container>
-                    <Navbar.Brand href="#home" className="nav-brand">
-                        <img
-                        alt=""
-                        src={logo}
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
-                        />{' '}
-                        <b>Ruang Edukasi</b>
-                    </Navbar.Brand>
-                    <Nav className="menu-nav">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Artikel</Nav.Link>
-                        <Nav.Link href="#pricing">Konsultasi</Nav.Link>
-                    </Nav>
-                    <Navbar.Collapse className="justify-content-end">
-                        <Navbar.Brand><img src={user} width="36" height="36"></img> </Navbar.Brand>
-                        <Navbar.Text> Mia</Navbar.Text>
+                    <div className="left-nav">
+                        <ul>
+                            <li>
+                                <Navbar.Brand href="#home" className="nav-brand">
+                                    <img
+                                    alt=""
+                                    src={logo}
+                                    width="30"
+                                    height="30"
+                                    className="d-inline-block align-top"
+                                    />{' '}
+                                    <b>Ruang Edukasi</b>
+                                </Navbar.Brand>
+                            </li>
+                            <li className="menu"><Link to="/home">Home</Link></li>
+                            <li className="menu"><Link to="/artikel">Artikel</Link></li>
+                            <li className="menu"><Link to="/konsultasi">Konsultasi</Link></li>
+                        </ul>
+                    </div>
+                    
+                    <Navbar.Collapse id="basic-navbar-nav">
+                       <Nav className="nav-right">
+                            <img src={profile}></img>
+                        </Nav>
+                        <p>Emily</p>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
