@@ -9,39 +9,24 @@ import axios from "axios";
 
 const Register = () => {
   const [username, setUsername] = useState("");
-  const [errorUsername, setErrorUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
   const [error, setError] = useState("");
-  const [redirect, setRedirect] = useState("");
   const [alert, setAlert] = useState("");
   
-
-
   const handleUsername = (e) => {
     const value = e.target.value
     setUsername(value);
-    if (value.length < 3 || value.length > 20) {
-      setErrorUsername('The username must be between 3 and 20 characters.')
-    }
     setError('')
   }
   const handleEmail = (e) => {
     const value = e.target.value;
     setEmail(value);
-    if (!value) {
-      setErrorEmail('This is not a valid email.')
-    }
     setError('')
   }
   const handlePassword = (e) => {
     const value = e.target.value
     setPassword(value);
-     if (value.length < 6 || value.length > 40) {
-      setErrorPassword('The password must be between 6 and 40 characters')
-    }
     setError('')
   }
   
@@ -54,15 +39,16 @@ const Register = () => {
     }
     
     if (!username) {
-      setError("The username must be between 3 and 20 characters.")
+      setError('Username cannot be empty')
     } else if (!email) {
-      setError('This is not a valid email.')
+      setError('Email cannot be empty')
     } else if (!password) {
-      setError('The username must be between 3 and 20 characters.')
+      setError('Password cannot be empty')
     } else {
       axios
         .post('api/user/register', dataUser)
         .then(result => {
+          console.log(result)
           if (result) {
             if (result.data) {
               setUsername('')
@@ -71,23 +57,19 @@ const Register = () => {
               setAlert(result.data.massage)
               setTimeout(() => {
                 setAlert('')
-              }, 3000)
+              }, 5000)
+              // window.location.href = "/login";
             }
           }
         })
         .catch(error => {
-          setError(error.reponse.data.massage)
+          setError(error.response.data.massage)
         })
     }
   }
 
     return (
       <>
-        {/* {
-          redirect && (
-          <Navigate to="/home" />
-          )
-        } */}
           <Container>
             <Row>
               <Col sm={2}>
@@ -110,7 +92,7 @@ const Register = () => {
                 {
                   alert && (
                     <div className="alert alert-primary mt-2 p-2" style={{ width: "25rem" }}>
-                      <p>Registration Successfull</p>
+                      <p>{alert}</p>
                     </div>
                   )
                 }

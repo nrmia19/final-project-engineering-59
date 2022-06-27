@@ -10,9 +10,7 @@ import axios from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
-  const [errorUsername, setErrorUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
   const [error, setError] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [alert, setAlert] = useState("");
@@ -20,27 +18,23 @@ const Login = () => {
   const handleUsername = (e) => {
     const value = e.target.value
     setUsername(value);
-    if (!value) {
-      setErrorUsername('Username cannot be empty')
-    }
     setError('')
   }
 
   const handlePassword = (e) => {
     const value = e.target.value
     setPassword(value);
-     if (!value) {
-      setErrorPassword('Password cannot be empty')
-    }
     setError('')
   }
   
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const dataUser = {
       username: username,
       password: password
     }
+    console.log(dataUser)
     
     if (!username) {
       setError('Username cannot be empty')
@@ -48,11 +42,11 @@ const Login = () => {
       setError('Password cannot be empty')
     } else {
       axios
-        .post('api/user/login', dataUser)
+        .post('api/user/login', JSON.stringify(dataUser))
         .then(result => {
           if (result) {
-            localStorage.setItem('username', result.data.Account.username)
-            localStorage.setItem('token', result.data.Account.token)
+            localStorage.setItem('username', JSON.stringify(result.data.Account.username))
+            localStorage.setItem('token', JSON.stringify(result.data.Account.token))
             setRedirect(true)
             setAlert(result.data.massage)
             setTimeout(() => {
@@ -77,11 +71,12 @@ const Login = () => {
               </div>
               </Col>
             <Col sm={10}>
-                <a href="/">
-                <div className="login-header">
+              <div className="login-header">
+                <Link to="/">
                   <img src={logo} alt="logo" />
+                </Link>
                 </div>
-                </a>
+               
                 <div className="login-body">
                 <div className="alert-style"> 
                   {
@@ -94,7 +89,7 @@ const Login = () => {
                   {
                     alert && (
                       <div className="alert alert-primary" style={{ width: "24rem" }}>
-                        <p>Login Success</p>
+                        <p>{alert}</p>
                       </div>
                     )
                   }
