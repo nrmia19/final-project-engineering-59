@@ -13,7 +13,7 @@ const Content = () => {
     return (
         <>
             <main>
-            <div className="content">
+            <div className="content-landing-page">
                 <div className="content-wrapper">
                 <Container>
                     <Row>
