@@ -11,6 +11,10 @@ body {
   text-align: center;
 }
 
+.content {
+  margin-top: 0;
+}
+
 .content-menu {
   background-color: #D0A3F4;
 }

@@ -11,16 +11,16 @@ body {
   left: 0px;
   top: 75px;
   display: inline-block;
-  background: #99E2FF;
+  background: #10367A;
 }
 
 .header h2 {
   font-family: 'Quicksand', sans-serif;
   font-style: normal;
-  font-weight: 100;
-  font-size: 36px;
+  font-weight: 800;
+  font-size: 30px;
   line-height: 50px;
-  color: #9B63DC;
+  color: white;
   padding-top: 50px;
   padding-left: 10px;
 }
@@ -28,8 +28,9 @@ body {
 .header h6 {
   font-family: 'Quicksand', sans-serif;
   font-style: normal;
-  color: #000000;
-  padding-top: 10px;
+  color: #FFFF;
+  font-weight: 500;
+  padding-top: 40px;
   padding-left: 10px;
 }
 
@@ -50,25 +51,27 @@ body {
           align-items: center;
   padding: 10px;
   gap: 10px;
-  width: 125px;
+  margin-top: 40px;
+  width: 200px;
   height: 37px;
   left: 1070px;
   top: 22px;
-  background: #56BBFF;
+  background: #99E2FF;
   border-radius: 25px;
   border: #56BBFF 1px solid;
-  color: #7003ec;
-  margin-top: 20px;
+  color: #3E1F7F;
+  font-weight: 800;
 }
 
 .header .btn-started:hover {
   text-decoration: none;
   background-color: #118ee0;
+  color: white;
 }
 
 .header-img {
-  padding-left: 250px;
-  padding-top: 50px;
+  padding-left: 0;
+  padding-top: 0;
 }
 
 @media screen and (max-width: 1000px) {
