@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap");
-
 body {
   font-family: 'Quicksand', sans-serif;
   margin: 0;
@@ -41,14 +40,14 @@ body {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 10px;
   gap: 10px;
   width: 125px;
@@ -84,7 +83,6 @@ body {
     padding-left: 0px;
     padding-top: 0px;
   }
-
   .header h2 {
     font-size: 24px;
     line-height: 30px;
@@ -99,5 +97,4 @@ body {
     padding-top: 10px;
   }
 }
-
 /*# sourceMappingURL=header.css.map */

@@ -13,11 +13,11 @@ function App() {
     <div className="App">
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/artikel" element={<ArtikelPage />} />
-          <Route exact path="/konsultasi" element={<Konsultasi />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/artikel" element={<ArtikelPage />} />
+          <Route path="/konsultasi" element={<Konsultasi />} />
       </Routes>
 
     </div>
