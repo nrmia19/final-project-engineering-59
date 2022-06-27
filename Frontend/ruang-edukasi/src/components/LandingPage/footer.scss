@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+
+.footer {
+    font-family: 'Quicksand', sans-serif;
+    background-color: rgb(5, 40, 104);
+    bottom: 0px;
+    left: 0px;
+    padding: 10px;
+    margin-top: 1000px;
+}
+
+.footer-wrapper {
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.table-content {
+    font-family: 'Quicksand', sans-serif;
+    text-decoration: none;
+    text-align: left;
+    font-size: 15px;
+    margin-top: 20px;
+
+
+    td {
+        color: #ffffff;
+    }
+
+
+}
+
+
+@media screen and (max-width: 1000px) {
+    .table-content {
+        font-size: 15px;
+        margin-top: 20px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .table-content {
+        font-family: 'Quicksand', sans-serif;
+        text-decoration: none;
+        text-align: left;
+        font-size: 15px;
+        margin-top: 20px;
+    }
+}
